@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "geometryVersion": 1,
+  "id": "core-v1",
+  "name": "Core v1",
+  "basePackId": "core-v0",
+  "styleProfileId": "beijing-modern-isometric-v1",
+  "overrideSlots": [
+    "character.gus"
+  ],
+  "grid": {
+    "tileWidth": 32,
+    "tileHeight": 16,
+    "elevation": 8,
+    "depthRule": "max-x-plus-y"
+  },
+  "requiredNewSlots": [
+    "backdrop.beijing-cbd",
+    "structure.wall-solid-nw",
+    "structure.wall-solid-ne",
+    "structure.wall-window-nw",
+    "structure.wall-window-ne",
+    "structure.wall-door-ne",
+    "structure.corner-column",
+    "decor.whiteboard-stand",
+    "decor.floor-plant",
+    "furniture.printer-station",
+    "furniture.lounge-set"
+  ],
+  "baseAssetPatches": {
+    "furniture.desk-island": {
+      "interactionPoints": [
+        { "id": "seat-se", "kind": "work-seat", "x": 1, "y": 2, "facing": "northwest" },
+        { "id": "seat-sw", "kind": "work-seat", "x": -1, "y": 1, "facing": "northeast" },
+        { "id": "seat-nw", "kind": "work-seat", "x": 1, "y": -1, "facing": "southeast" },
+        { "id": "seat-ne", "kind": "work-seat", "x": 3, "y": 0, "facing": "southwest" }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "backdrop.beijing-cbd", "slot": "backdrop.beijing-cbd", "kind": "backdrop",
+      "frame": { "x": 0, "y": 0, "width": 640, "height": 112 },
+      "anchor": { "x": 320, "y": 108 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": false }], "collision": [], "layer": -20
+    },
+    {
+      "id": "structure.wall-solid-nw", "slot": "structure.wall-solid-nw", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 88 },
+      "anchor": { "x": 48, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-solid-ne", "slot": "structure.wall-solid-ne", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 88 },
+      "anchor": { "x": 48, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": true }, { "x": 0, "y": 2, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 0, "y": 1 }, { "x": 0, "y": 2 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-window-nw", "slot": "structure.wall-window-nw", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 128, "height": 96 },
+      "anchor": { "x": 64, "y": 88 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }, { "x": 3, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }, { "x": 3, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-window-ne", "slot": "structure.wall-window-ne", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 128, "height": 96 },
+      "anchor": { "x": 64, "y": 88 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": true }, { "x": 0, "y": 2, "blocked": true }, { "x": 0, "y": 3, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 0, "y": 1 }, { "x": 0, "y": 2 }, { "x": 0, "y": 3 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-door-ne", "slot": "structure.wall-door-ne", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 88 },
+      "anchor": { "x": 48, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": false }, { "x": 0, "y": 2, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 0, "y": 2 }], "layer": 0
+    },
+    {
+      "id": "structure.corner-column", "slot": "structure.corner-column", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 32, "height": 88 },
+      "anchor": { "x": 16, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }], "collision": [{ "x": 0, "y": 0 }], "layer": 1
+    },
+    {
+      "id": "decor.whiteboard-stand", "slot": "decor.whiteboard-stand", "kind": "decor",
+      "frame": { "x": 0, "y": 0, "width": 64, "height": 72 },
+      "anchor": { "x": 32, "y": 64 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "decor.floor-plant", "slot": "decor.floor-plant", "kind": "decor",
+      "frame": { "x": 0, "y": 0, "width": 48, "height": 64 },
+      "anchor": { "x": 24, "y": 56 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }], "collision": [{ "x": 0, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "furniture.printer-station", "slot": "furniture.printer-station", "kind": "furniture",
+      "frame": { "x": 0, "y": 0, "width": 80, "height": 72 },
+      "anchor": { "x": 40, "y": 64 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "furniture.lounge-set", "slot": "furniture.lounge-set", "kind": "furniture",
+      "frame": { "x": 0, "y": 0, "width": 112, "height": 88 },
+      "anchor": { "x": 56, "y": 76 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [
+        { "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true },
+        { "x": 0, "y": 1, "blocked": true }, { "x": 1, "y": 1, "blocked": true }, { "x": 2, "y": 1, "blocked": true }
+      ],
+      "collision": [
+        { "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 },
+        { "x": 0, "y": 1 }, { "x": 1, "y": 1 }, { "x": 2, "y": 1 }
+      ], "layer": 0
+    }
+  ]
+}

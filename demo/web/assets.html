@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-Hans" data-assets-api-base="/api/assets">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="assets-api-base" content="/api/assets" />
+    <title>像素资产验收台</title>
+    <link rel="stylesheet" href="./assets.css" />
+  </head>
+  <body>
+    <main class="assets-shell">
+      <header class="workspace-header">
+        <div class="workspace-title">
+          <h1>像素资产验收台</h1>
+        </div>
+        <div class="workspace-summary">
+          <a class="back-link" href="/review">← 返回实时验收</a>
+          <span id="connectionBadge" class="status-badge" aria-live="polite"><i></i><span>正在读取资产包</span></span>
+          <span>风格 <strong id="styleLabel">—</strong></span>
+          <span id="baseReleaseSummary" hidden>继承源 <strong id="baseReleaseLabel">—</strong></span>
+          <span>Revision <strong id="packRevisionLabel">0</strong></span>
+        </div>
+        <div class="workspace-toolbar">
+          <label class="pack-switcher" for="packSelect">
+            <span>当前资产包</span>
+            <select id="packSelect" aria-describedby="packContext" disabled>
+              <option value="">正在读取…</option>
+            </select>
+            <small id="packContext">资产包读取后可在此切换。</small>
+          </label>
+          <div class="button-row">
+            <button id="refreshButton" class="button" type="button">刷新目录</button>
+            <button id="scanInboxButton" class="button" type="button">扫描收件箱</button>
+            <button id="openImportButton" class="button button-primary" type="button">导入 PNG</button>
+          </div>
+        </div>
+        <p class="workspace-hint">导入单张 PNG，或扫描服务端收件箱。</p>
+      </header>
+
+      <nav id="mobileAssetFlow" class="mobile-asset-flow" aria-label="手机验收流程">
+        <button id="assetTabButton" type="button" data-mobile-pane-target="catalog" aria-pressed="true">
+          <span>1</span>目录
+        </button>
+        <button id="previewTabButton" type="button" data-mobile-pane-target="preview" aria-pressed="false" disabled>
+          <span>2</span>预览
+        </button>
+        <button id="reviewTabButton" type="button" data-mobile-pane-target="review" aria-pressed="false" disabled>
+          <span>3</span>验收
+        </button>
+      </nav>
+
+      <div id="workbenchGrid" class="workbench-grid" data-mobile-pane="catalog">
+        <aside class="panel catalog-panel" data-mobile-workspace="catalog" aria-labelledby="catalogHeading">
+          <header class="panel-heading">
+            <div>
+              <p class="section-kicker">CATALOG</p>
+              <h2 id="catalogHeading">资产目录</h2>
+            </div>
+            <label class="select-all" id="selectAllControl" hidden>
+              <input id="selectAllCheckbox" type="checkbox" aria-label="全选当前目录中所有待验收草稿" />
+              <span>全选</span>
+            </label>
+            <span id="catalogCount" class="count-badge">0</span>
+          </header>
+
+          <form id="filterForm" class="filter-grid" aria-label="筛选资产">
+            <label>
+              <span>类型</span>
+              <select id="kindFilter" name="kind"><option value="">全部类型</option></select>
+            </label>
+            <label>
+              <span>状态</span>
+              <select id="statusFilter" name="status"><option value="">全部状态</option></select>
+            </label>
+            <button id="clearFiltersButton" class="button button-quiet filter-wide" type="button">清除筛选</button>
+          </form>
+
+          <section id="batchBar" class="batch-bar" aria-label="批量验收" hidden>
+            <div class="batch-bar-row">
+              <strong id="batchSelectionLabel" aria-live="polite">已选 0 项</strong>
+              <button id="batchClearButton" class="button button-quiet" type="button">清除选择</button>
+            </div>
+            <label class="note-field" for="batchNote">
+              <span>批量说明（拒绝必填）</span>
+              <textarea id="batchNote" rows="2" maxlength="2000" placeholder="批量拒绝时必须写清需要修改的像素、锚点和占地。"></textarea>
+            </label>
+            <div class="button-row">
+              <button id="batchAcceptButton" class="button" type="button" data-batch-decision="accepted">批量接受</button>
+              <button id="batchRejectButton" class="button button-danger" type="button" data-batch-decision="rejected">批量拒绝</button>
+            </div>
+            <p class="batch-hint">仅未继承的待验收草稿可批量操作；整批要么全部写入，要么全部不写入。</p>
+          </section>
+
+          <div id="catalogState" class="catalog-state" role="status" aria-live="polite">正在加载目录…</div>
+          <div id="assetList" class="asset-list" role="group" aria-label="资产列表" tabindex="-1"></div>
+        </aside>
+
+        <section class="panel preview-panel" data-mobile-workspace="preview" aria-labelledby="previewHeading">
+          <header class="panel-heading preview-heading">
+            <div>
+              <p class="section-kicker">PREVIEW</p>
+              <h2 id="previewHeading">选择一个资产</h2>
+            </div>
+            <span id="previewStatus" class="preview-status">等待选择</span>
+          </header>
+
+          <div class="preview-tools" aria-label="预览工具">
+            <label class="version-control">
+              <span>版本</span>
+              <select id="versionASelect" aria-label="版本" disabled></select>
+            </label>
+            <div id="scaleControls" class="segmented-control compact" role="group" aria-label="PNG 预览倍率">
+              <button type="button" data-scale="1" aria-pressed="true">1×</button>
+              <button type="button" data-scale="2" aria-pressed="false">2×</button>
+              <button type="button" data-scale="4" aria-pressed="false">4×</button>
+            </div>
+            <label class="fixture-control">
+              <span>场景</span>
+              <select id="fixtureSelect">
+                <option value="asset">资产原图</option>
+                <option value="bare">光秃开局</option>
+                <option value="growth">中期发展</option>
+                <option value="team">8 人同屏</option>
+                <option value="occlusion">遮挡压力</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="guide-toolbar" role="group" aria-label="诊断叠层">
+            <button class="toggle-button" type="button" data-guide="checker" aria-pressed="true">棋盘</button>
+            <button class="toggle-button" type="button" data-guide="grid" aria-pressed="false">网格</button>
+            <button class="toggle-button" type="button" data-guide="anchor" aria-pressed="false">锚点</button>
+            <button class="toggle-button" type="button" data-guide="footprint" aria-pressed="false">占地</button>
+            <button class="toggle-button" type="button" data-guide="light" aria-pressed="false">光向</button>
+          </div>
+
+          <div id="canvasViewport" class="canvas-viewport has-checker" tabindex="0" aria-label="像素资产预览，可使用方向键切换动画帧">
+            <canvas id="assetCanvas" width="480" height="320" aria-label="当前资产 Canvas 预览"></canvas>
+            <div id="canvasEmpty" class="canvas-empty">
+              <strong>资产预览尚未载入</strong>
+              <span>从左侧目录选择一项，或先导入 PNG。</span>
+            </div>
+          </div>
+
+          <div class="animation-toolbar" aria-label="动画检查">
+            <div>
+              <strong>动画</strong>
+              <span id="frameLabel">静态 · 1/1</span>
+            </div>
+            <div class="button-row">
+              <label class="speed-control">
+                <span>动作</span>
+                <select id="animationActionSelect" disabled>
+                  <option value="walk" selected>行走</option>
+                  <option value="idle">待机</option>
+                  <option value="work">工作</option>
+                </select>
+              </label>
+              <label class="speed-control">
+                <span>方向</span>
+                <select id="animationDirectionSelect" disabled>
+                  <option value="southeast" selected>右下</option>
+                  <option value="southwest">左下</option>
+                  <option value="northwest">左上</option>
+                  <option value="northeast">右上</option>
+                </select>
+              </label>
+              <button id="previousFrameButton" class="button icon-button" type="button" aria-label="上一帧" disabled>←</button>
+              <button id="playPauseButton" class="button" type="button" disabled>静态</button>
+              <button id="nextFrameButton" class="button icon-button" type="button" aria-label="下一帧" disabled>→</button>
+              <label class="speed-control">
+                <span>倍速</span>
+                <select id="animationSpeedSelect" disabled>
+                  <option value="0.5">0.5×</option>
+                  <option value="1" selected>1×</option>
+                  <option value="2">2×</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+        </section>
+
+        <aside class="panel inspector-panel" data-mobile-workspace="review" aria-labelledby="inspectorHeading">
+          <header class="panel-heading">
+            <div>
+              <p class="section-kicker">INSPECT + DECIDE</p>
+              <h2 id="inspectorHeading">版本信息</h2>
+            </div>
+          </header>
+
+          <section id="metadataSection" class="inspector-section">
+            <div class="empty-copy">选择资产后显示类型、任务、锚点与占地信息。</div>
+          </section>
+
+          <section class="inspector-section" aria-labelledby="historyHeading">
+            <div class="subheading">
+              <h3 id="historyHeading">版本历史</h3>
+              <span id="historyCount">0 个版本</span>
+            </div>
+            <ol id="versionHistory" class="version-history"></ol>
+          </section>
+
+          <section class="inspector-section" aria-labelledby="decisionHeading">
+            <div class="subheading">
+              <h3 id="decisionHeading">验收结论</h3>
+              <span id="reviewRevisionHint">等待版本</span>
+            </div>
+            <form id="reviewForm">
+              <p id="inheritedNotice" class="inherited-notice" role="status" hidden></p>
+              <div id="decisionControls" class="decision-controls" role="group" aria-label="验收结论">
+                <button type="button" data-decision="accepted" aria-pressed="false">接受</button>
+                <button type="button" data-decision="rejected" aria-pressed="false">拒绝</button>
+              </div>
+              <label class="note-field" for="reviewNote">
+                <span>纯文本说明</span>
+                <textarea id="reviewNote" rows="5" maxlength="2000" placeholder="记录通过理由，或写清需要修改的像素、锚点和占地。" disabled></textarea>
+              </label>
+              <button id="submitReviewButton" class="button button-primary button-wide" type="submit" disabled>提交验收</button>
+            </form>
+            <div class="copy-actions">
+              <button id="copyGenerationButton" class="button" type="button" disabled>复制生成请求</button>
+              <button id="copyFeedbackButton" class="button" type="button" disabled>复制修改反馈</button>
+            </div>
+          </section>
+
+          <section id="packScenePreviewSection" class="pack-scene-previews" aria-labelledby="packScenePreviewHeading" hidden>
+            <div class="subheading">
+              <h3 id="packScenePreviewHeading">完整场景候选</h3>
+              <span id="packScenePreviewCount">0 张</span>
+            </div>
+            <div id="packScenePreviewList" class="pack-scene-preview-list"></div>
+          </section>
+
+          <section class="inspector-section activation-section" aria-labelledby="activationHeading">
+            <div class="subheading">
+              <h3 id="activationHeading" tabindex="-1">激活资产包</h3>
+              <span id="activationState">尚未读取门禁</span>
+            </div>
+            <ul id="gateList" class="gate-list"></ul>
+            <button id="activatePackButton" class="button button-danger button-wide" type="button" disabled>确认激活当前资产包</button>
+          </section>
+        </aside>
+      </div>
+
+      <!-- Sticky to the viewport bottom, so it is last in flow: placed above the grid its
+           static box reserved a permanent blank band at ≤760px. -->
+      <div class="mobile-selection-bar" aria-live="polite">
+        <span id="mobileSelectionLabel">尚未选择资产</span>
+        <button id="mobileNextButton" class="button button-primary" type="button" disabled>选择资产</button>
+      </div>
+    </main>
+
+    <dialog id="importDialog" class="modal">
+      <form id="importForm" method="dialog" class="modal-card">
+        <header>
+          <div>
+            <p class="section-kicker">IMPORT</p>
+            <h2>导入 PNG 版本</h2>
+          </div>
+          <button class="icon-button modal-close" type="button" data-close-dialog="importDialog" aria-label="关闭导入窗口">×</button>
+        </header>
+        <label class="file-drop" for="pngInput">
+          <span>PNG 文件</span>
+          <input id="pngInput" name="png" type="file" accept="image/png,.png" required />
+          <small>只接受 PNG；透明背景会在棋盘底纹上显示。</small>
+        </label>
+        <label for="metadataInput">
+          <span>Metadata JSON</span>
+          <textarea id="metadataInput" name="metadata" rows="11" spellcheck="false" required>{
+  "slot": "furniture.desk-island",
+  "displayName": "Desk candidate",
+  "jobId": "manual-import",
+  "anchor": { "x": 0, "y": 0 },
+  "footprint": [{ "x": 0, "y": 0 }]
+}</textarea>
+        </label>
+        <p id="importError" class="form-error" role="alert"></p>
+        <footer>
+          <button class="button" type="button" data-close-dialog="importDialog">取消</button>
+          <button id="submitImportButton" class="button button-primary" type="submit">导入资产</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog id="activationDialog" class="modal">
+      <form id="activationForm" method="dialog" class="modal-card">
+        <header>
+          <div>
+            <p class="section-kicker">ACTIVATE PACK</p>
+            <h2>确认激活资产包？</h2>
+          </div>
+          <button class="icon-button modal-close" type="button" data-close-dialog="activationDialog" aria-label="关闭确认窗口">×</button>
+        </header>
+        <p>激活会让通过门禁的版本成为当前使用资产。提交时会校验资产包 revision；若期间有新修改，本次操作会被拒绝。</p>
+        <div id="activationSummary" class="confirmation-summary"></div>
+        <section class="activation-slot-check" aria-labelledby="activationSlotHeading">
+          <div class="subheading">
+            <h3 id="activationSlotHeading">必需槽位</h3>
+            <span id="activationSlotCount">等待读取</span>
+          </div>
+          <ol id="activationSlotSummary" class="activation-slot-summary"></ol>
+        </section>
+        <footer>
+          <button class="button" type="button" data-close-dialog="activationDialog">返回检查</button>
+          <button id="confirmActivationButton" class="button button-danger" type="submit">确认激活</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog id="batchDialog" class="modal">
+      <form id="batchForm" method="dialog" class="modal-card">
+        <header>
+          <div>
+            <p class="section-kicker">BATCH REVIEW</p>
+            <h2 id="batchDialogTitle">确认批量验收？</h2>
+          </div>
+          <button class="icon-button modal-close" type="button" data-close-dialog="batchDialog" aria-label="关闭批量验收窗口">×</button>
+        </header>
+        <p>批量验收按提交时的资产包 revision 做一次原子操作；若期间有新修改，整批会被拒绝且不写入任何结论。</p>
+        <div id="batchSummary" class="confirmation-summary"></div>
+        <section class="batch-item-check" aria-labelledby="batchItemHeading">
+          <div class="subheading">
+            <h3 id="batchItemHeading">本次提交</h3>
+            <span id="batchItemCount">0 项</span>
+          </div>
+          <ol id="batchItemSummary" class="batch-item-summary"></ol>
+        </section>
+        <footer>
+          <button class="button" type="button" data-close-dialog="batchDialog">返回检查</button>
+          <button id="confirmBatchButton" class="button button-primary" type="submit">确认提交</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./assets.mjs"></script>
+  </body>
+</html>

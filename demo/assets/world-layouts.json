@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "layouts": [
+    {
+      "id": "world.mid-growth-v1",
+      "label": "中期发展办公室（兼容版）",
+      "stage": "legacy-mid-growth",
+      "requiredPackId": "core-v0",
+      "creatable": false,
+      "sourceFixtureId": "mid-growth",
+      "columns": 20,
+      "rows": 12,
+      "origin": { "x": 320, "y": 80 },
+      "camera": { "x": 0, "y": 10, "zoom": 1 },
+      "spawnPoints": [
+        { "playerId": "ava", "name": "Ava", "x": 1, "y": 1 },
+        { "playerId": "ben", "name": "Ben", "x": 6, "y": 1 },
+        { "playerId": "cleo", "name": "Cleo", "x": 13, "y": 1 },
+        { "playerId": "drew", "name": "Drew", "x": 18, "y": 1 },
+        { "playerId": "eli", "name": "Eli", "x": 1, "y": 10 },
+        { "playerId": "faye", "name": "Faye", "x": 6, "y": 10 },
+        { "playerId": "gus", "name": "Gus", "x": 13, "y": 10 },
+        { "playerId": "hana", "name": "Hana", "x": 18, "y": 10 }
+      ],
+      "floor": {
+        "defaultAssetId": "floor.raw-concrete",
+        "regions": [
+          { "assetId": "floor.patched-concrete", "x": 0, "y": 7, "width": 7, "height": 3 },
+          { "assetId": "floor.light-wood", "x": 7, "y": 3, "width": 7, "height": 4 }
+        ],
+        "border": { "assetId": "floor.utility-border", "edges": ["north", "east", "south", "west"] }
+      },
+      "placements": [
+        { "id": "growth-desk", "assetId": "furniture.desk-island", "x": 3, "y": 2 },
+        { "id": "growth-meeting", "assetId": "furniture.meeting-table", "x": 8, "y": 4 },
+        { "id": "growth-storage", "assetId": "furniture.storage-cabinet", "x": 1, "y": 5 },
+        { "id": "growth-tea-bar", "assetId": "furniture.tea-coffee-bar", "x": 2, "y": 8 },
+        { "id": "growth-moving-box", "assetId": "furniture.moving-box", "x": 16, "y": 8 }
+      ]
+    },
+    {
+      "id": "world.opening-empty-v1",
+      "label": "光秃开局办公室",
+      "displayLabel": "光秃开局办公室",
+      "stage": "opening",
+      "requiredPackId": "core-v1",
+      "sourceFixtureId": "opening-empty",
+      "columns": 14,
+      "rows": 9,
+      "origin": { "x": 320, "y": 72 },
+      "camera": { "x": 0, "y": 0, "zoom": 1.25 },
+      "spawnPoints": [
+        { "playerId": "ava", "name": "Ava", "x": 1, "y": 1 },
+        { "playerId": "ben", "name": "Ben", "x": 4, "y": 1 },
+        { "playerId": "cleo", "name": "Cleo", "x": 9, "y": 1 },
+        { "playerId": "drew", "name": "Drew", "x": 12, "y": 1 },
+        { "playerId": "eli", "name": "Eli", "x": 1, "y": 7 },
+        { "playerId": "faye", "name": "Faye", "x": 4, "y": 7 },
+        { "playerId": "gus", "name": "Gus", "x": 9, "y": 7 },
+        { "playerId": "hana", "name": "Hana", "x": 12, "y": 7 }
+      ],
+      "floor": {
+        "defaultAssetId": "floor.raw-concrete",
+        "regions": [
+          { "assetId": "floor.patched-concrete", "x": 1, "y": 5, "width": 4, "height": 3 },
+          { "assetId": "floor.light-wood", "x": 4, "y": 2, "width": 6, "height": 4 }
+        ],
+        "border": { "assetId": "floor.utility-border", "edges": ["north", "east", "south", "west"] }
+      },
+      "placements": [
+        { "id": "opening-cbd", "assetId": "backdrop.beijing-cbd", "x": 0, "y": 0 },
+        { "id": "opening-corner", "assetId": "structure.corner-column", "x": 0, "y": 0 },
+        { "id": "opening-window-nw-a", "assetId": "structure.wall-window-nw", "x": 1, "y": 0 },
+        { "id": "opening-wall-nw", "assetId": "structure.wall-solid-nw", "x": 5, "y": 0 },
+        { "id": "opening-window-nw-b", "assetId": "structure.wall-window-nw", "x": 8, "y": 0 },
+        { "id": "opening-wall-ne", "assetId": "structure.wall-solid-ne", "x": 0, "y": 1 },
+        { "id": "opening-door-ne", "assetId": "structure.wall-door-ne", "x": 0, "y": 4 },
+        { "id": "opening-desk", "assetId": "furniture.desk-island", "x": 5, "y": 3 },
+        { "id": "opening-storage", "assetId": "furniture.storage-cabinet", "x": 1, "y": 3 },
+        { "id": "opening-tea", "assetId": "furniture.tea-coffee-bar", "x": 10, "y": 2 },
+        { "id": "opening-box-a", "assetId": "furniture.moving-box", "x": 2, "y": 6 },
+        { "id": "opening-box-b", "assetId": "furniture.moving-box", "x": 10, "y": 6 },
+        { "id": "opening-box-c", "assetId": "furniture.moving-box", "x": 12, "y": 5 }
+      ]
+    },
+    {
+      "id": "world.mid-growth-v2",
+      "label": "丰富中期办公室",
+      "displayLabel": "丰富中期办公室",
+      "stage": "mid-growth",
+      "requiredPackId": "core-v1",
+      "sourceFixtureId": "mid-growth-v2",
+      "columns": 20,
+      "rows": 12,
+      "origin": { "x": 320, "y": 64 },
+      "camera": { "x": 0, "y": 0, "zoom": 1 },
+      "spawnPoints": [
+        { "playerId": "ava", "name": "Ava", "x": 1, "y": 1 },
+        { "playerId": "ben", "name": "Ben", "x": 6, "y": 1 },
+        { "playerId": "cleo", "name": "Cleo", "x": 13, "y": 1 },
+        { "playerId": "drew", "name": "Drew", "x": 18, "y": 1 },
+        { "playerId": "eli", "name": "Eli", "x": 1, "y": 10 },
+        { "playerId": "faye", "name": "Faye", "x": 6, "y": 10 },
+        { "playerId": "gus", "name": "Gus", "x": 13, "y": 10 },
+        { "playerId": "hana", "name": "Hana", "x": 18, "y": 10 }
+      ],
+      "floor": {
+        "defaultAssetId": "floor.raw-concrete",
+        "regions": [
+          { "assetId": "floor.patched-concrete", "x": 0, "y": 7, "width": 7, "height": 3 },
+          { "assetId": "floor.light-wood", "x": 7, "y": 3, "width": 7, "height": 4 }
+        ],
+        "border": { "assetId": "floor.utility-border", "edges": ["north", "east", "south", "west"] }
+      },
+      "placements": [
+        { "id": "growth-v2-cbd", "assetId": "backdrop.beijing-cbd", "x": 0, "y": 0 },
+        { "id": "growth-v2-corner", "assetId": "structure.corner-column", "x": 0, "y": 0 },
+        { "id": "growth-v2-window-nw-a", "assetId": "structure.wall-window-nw", "x": 1, "y": 0 },
+        { "id": "growth-v2-window-nw-b", "assetId": "structure.wall-window-nw", "x": 5, "y": 0 },
+        { "id": "growth-v2-window-nw-c", "assetId": "structure.wall-window-nw", "x": 9, "y": 0 },
+        { "id": "growth-v2-window-nw-d", "assetId": "structure.wall-window-nw", "x": 13, "y": 0 },
+        { "id": "growth-v2-wall-nw", "assetId": "structure.wall-solid-nw", "x": 17, "y": 0 },
+        { "id": "growth-v2-window-ne-a", "assetId": "structure.wall-window-ne", "x": 0, "y": 1 },
+        { "id": "growth-v2-window-ne-b", "assetId": "structure.wall-window-ne", "x": 0, "y": 5 },
+        { "id": "growth-v2-door-ne", "assetId": "structure.wall-door-ne", "x": 0, "y": 9 },
+        { "id": "growth-v2-desk", "assetId": "furniture.desk-island", "x": 3, "y": 2 },
+        { "id": "growth-v2-meeting", "assetId": "furniture.meeting-table", "x": 8, "y": 4 },
+        { "id": "growth-v2-storage", "assetId": "furniture.storage-cabinet", "x": 1, "y": 6 },
+        { "id": "growth-v2-tea", "assetId": "furniture.tea-coffee-bar", "x": 2, "y": 9 },
+        { "id": "growth-v2-lounge", "assetId": "furniture.lounge-set", "x": 14, "y": 3 },
+        { "id": "growth-v2-whiteboard", "assetId": "decor.whiteboard-stand", "x": 8, "y": 7 },
+        { "id": "growth-v2-plant", "assetId": "decor.floor-plant", "x": 13, "y": 7 },
+        { "id": "growth-v2-printer", "assetId": "furniture.printer-station", "x": 15, "y": 7 },
+        { "id": "growth-v2-box", "assetId": "furniture.moving-box", "x": 17, "y": 9 }
+      ]
+    },
+    {
+      "id": "world.opening-empty-v2",
+      "label": "光秃开局办公室 v2",
+      "displayLabel": "光秃开局办公室",
+      "stage": "opening",
+      "requiredPackId": "core-v2",
+      "sourceFixtureId": "opening-empty-v2",
+      "columns": 14,
+      "rows": 9,
+      "origin": { "x": 280, "y": 136 },
+      "camera": { "x": 0, "y": 0, "zoom": 1.5 },
+      "spawnPoints": [
+        { "playerId": "ava", "name": "Ava", "x": 6, "y": 2 },
+        { "playerId": "ben", "name": "Ben", "x": 4, "y": 4 },
+        { "playerId": "cleo", "name": "Cleo", "x": 6, "y": 5 },
+        { "playerId": "drew", "name": "Drew", "x": 12, "y": 1 },
+        { "playerId": "eli", "name": "Eli", "x": 1, "y": 7 },
+        { "playerId": "faye", "name": "Faye", "x": 4, "y": 7 },
+        { "playerId": "gus", "name": "Gus", "x": 9, "y": 7 },
+        { "playerId": "hana", "name": "Hana", "x": 12, "y": 7 }
+      ],
+      "initialActivities": [
+        { "playerId": "ava", "type": "work", "placementId": "opening-v2-desk", "seatId": "seat-nw" },
+        { "playerId": "ben", "type": "work", "placementId": "opening-v2-desk", "seatId": "seat-sw" },
+        { "playerId": "cleo", "type": "work", "placementId": "opening-v2-desk", "seatId": "seat-se" }
+      ],
+      "floor": {
+        "defaultAssetId": "floor.raw-concrete",
+        "regions": [
+          { "assetId": "floor.patched-concrete", "x": 1, "y": 5, "width": 4, "height": 3 },
+          { "assetId": "floor.light-wood", "x": 4, "y": 2, "width": 6, "height": 4 }
+        ],
+        "border": { "assetId": "floor.utility-border", "edges": ["north", "east", "south", "west"] }
+      },
+      "placements": [
+        { "id": "opening-v2-cbd", "assetId": "backdrop.beijing-cbd", "x": 0, "y": 0 },
+        { "id": "opening-v2-corner", "assetId": "structure.corner-column", "x": 0, "y": 0 },
+        { "id": "opening-v2-window-nw-a", "assetId": "structure.wall-window-nw", "x": 1, "y": 0 },
+        { "id": "opening-v2-wall-nw", "assetId": "structure.wall-solid-nw", "x": 5, "y": 0 },
+        { "id": "opening-v2-window-nw-b", "assetId": "structure.wall-window-nw", "x": 8, "y": 0 },
+        { "id": "opening-v2-wall-ne", "assetId": "structure.wall-solid-ne", "x": 0, "y": 1 },
+        { "id": "opening-v2-door-ne", "assetId": "structure.wall-door-ne", "x": 0, "y": 4 },
+        { "id": "opening-v2-desk", "assetId": "furniture.desk-island", "x": 5, "y": 3 },
+        { "id": "opening-v2-storage", "assetId": "furniture.storage-cabinet", "x": 1, "y": 3 },
+        { "id": "opening-v2-tea", "assetId": "furniture.tea-coffee-bar", "x": 10, "y": 2 },
+        { "id": "opening-v2-box-a", "assetId": "furniture.moving-box", "x": 2, "y": 6 },
+        { "id": "opening-v2-box-b", "assetId": "furniture.moving-box", "x": 10, "y": 6 },
+        { "id": "opening-v2-box-c", "assetId": "furniture.moving-box", "x": 12, "y": 5 }
+      ]
+    },
+    {
+      "id": "world.mid-growth-v3",
+      "label": "丰富中期办公室 v3",
+      "displayLabel": "丰富中期办公室",
+      "stage": "mid-growth",
+      "requiredPackId": "core-v2",
+      "sourceFixtureId": "mid-growth-v3",
+      "columns": 20,
+      "rows": 12,
+      "origin": { "x": 256, "y": 100 },
+      "camera": { "x": 0, "y": 0, "zoom": 1 },
+      "spawnPoints": [
+        { "playerId": "ava", "name": "Ava", "x": 4, "y": 1 },
+        { "playerId": "ben", "name": "Ben", "x": 2, "y": 3 },
+        { "playerId": "cleo", "name": "Cleo", "x": 12, "y": 4 },
+        { "playerId": "drew", "name": "Drew", "x": 15, "y": 3 },
+        { "playerId": "eli", "name": "Eli", "x": 4, "y": 4 },
+        { "playerId": "faye", "name": "Faye", "x": 16, "y": 8 },
+        { "playerId": "gus", "name": "Gus", "x": 10, "y": 4 },
+        { "playerId": "hana", "name": "Hana", "x": 12, "y": 9 }
+      ],
+      "initialActivities": [
+        { "playerId": "ava", "type": "work", "placementId": "growth-v3-desk-team", "seatId": "seat-nw" },
+        { "playerId": "ben", "type": "work", "placementId": "growth-v3-desk-team", "seatId": "seat-sw" },
+        { "playerId": "cleo", "type": "work", "placementId": "growth-v3-focus-a", "seatId": "seat-work" },
+        { "playerId": "drew", "type": "work", "placementId": "growth-v3-focus-b", "seatId": "seat-work" },
+        { "playerId": "eli", "type": "work", "placementId": "growth-v3-desk-team", "seatId": "seat-se" },
+        { "playerId": "faye", "type": "work", "placementId": "growth-v3-focus-c", "seatId": "seat-work" },
+        { "playerId": "hana", "type": "work", "placementId": "growth-v3-focus-d", "seatId": "seat-work" }
+      ],
+      "floor": {
+        "defaultAssetId": "floor.raw-concrete",
+        "regions": [
+          { "assetId": "floor.patched-concrete", "x": 1, "y": 4, "width": 6, "height": 4 },
+          { "assetId": "floor.light-wood", "x": 5, "y": 8, "width": 10, "height": 3 }
+        ],
+        "border": { "assetId": "floor.utility-border", "edges": ["north", "east", "south", "west"] }
+      },
+      "placements": [
+        { "id": "growth-v3-cbd", "assetId": "backdrop.beijing-cbd", "x": 0, "y": 0 },
+        { "id": "growth-v3-corner", "assetId": "structure.corner-column", "x": 0, "y": 0 },
+        { "id": "growth-v3-window-nw-a", "assetId": "structure.wall-window-nw", "x": 1, "y": 0 },
+        { "id": "growth-v3-window-nw-b", "assetId": "structure.wall-window-nw", "x": 5, "y": 0 },
+        { "id": "growth-v3-window-nw-c", "assetId": "structure.wall-window-nw", "x": 9, "y": 0 },
+        { "id": "growth-v3-window-nw-d", "assetId": "structure.wall-window-nw", "x": 13, "y": 0 },
+        { "id": "growth-v3-wall-nw", "assetId": "structure.wall-solid-nw", "x": 17, "y": 0 },
+        { "id": "growth-v3-window-ne-a", "assetId": "structure.wall-window-ne", "x": 0, "y": 1 },
+        { "id": "growth-v3-window-ne-b", "assetId": "structure.wall-window-ne", "x": 0, "y": 5 },
+        { "id": "growth-v3-door-ne", "assetId": "structure.wall-door-ne", "x": 0, "y": 9 },
+        { "id": "growth-v3-desk-team", "assetId": "furniture.desk-island", "x": 3, "y": 2 },
+        { "id": "growth-v3-focus-a", "assetId": "furniture.focus-desk-nw", "x": 11, "y": 2 },
+        { "id": "growth-v3-focus-b", "assetId": "furniture.focus-desk-ne", "x": 16, "y": 2 },
+        { "id": "growth-v3-focus-c", "assetId": "furniture.focus-desk-nw", "x": 15, "y": 6 },
+        { "id": "growth-v3-focus-d", "assetId": "furniture.focus-desk-ne", "x": 13, "y": 8 },
+        { "id": "growth-v3-meeting", "assetId": "furniture.meeting-table", "x": 5, "y": 8 },
+        { "id": "growth-v3-storage-a", "assetId": "furniture.storage-cabinet", "x": 1, "y": 6 },
+        { "id": "growth-v3-storage-b", "assetId": "furniture.storage-cabinet", "x": 1, "y": 8 },
+        { "id": "growth-v3-tea", "assetId": "furniture.tea-coffee-bar", "x": 2, "y": 10 },
+        { "id": "growth-v3-whiteboard", "assetId": "decor.whiteboard-stand", "x": 8, "y": 5 },
+        { "id": "growth-v3-pinboard", "assetId": "decor.pinboard-stand", "x": 8, "y": 3 },
+        { "id": "growth-v3-media", "assetId": "furniture.media-console", "x": 8, "y": 1 },
+        { "id": "growth-v3-prototype", "assetId": "furniture.prototype-bench", "x": 1, "y": 5 },
+        { "id": "growth-v3-bookcase", "assetId": "furniture.low-bookcase", "x": 5, "y": 10 },
+        { "id": "growth-v3-entry-bench", "assetId": "furniture.entry-bench", "x": 1, "y": 9 },
+        { "id": "growth-v3-lounge", "assetId": "furniture.lounge-set", "x": 9, "y": 9 },
+        { "id": "growth-v3-printer", "assetId": "furniture.printer-station", "x": 17, "y": 1 },
+        { "id": "growth-v3-plant-a", "assetId": "decor.floor-plant", "x": 14, "y": 4 },
+        { "id": "growth-v3-plant-b", "assetId": "decor.floor-plant", "x": 18, "y": 4 },
+        { "id": "growth-v3-plant-c", "assetId": "decor.floor-plant", "x": 15, "y": 10 },
+        { "id": "growth-v3-box", "assetId": "furniture.moving-box", "x": 18, "y": 10 }
+      ]
+    }
+  ]
+}

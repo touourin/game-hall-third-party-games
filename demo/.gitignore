@@ -1,0 +1,16 @@
+.venv/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+node_modules/
+coverage/
+data/*.sqlite3
+data/*.sqlite3-*
+# 资产二进制、原始素材、收件箱 sidecar、派生验收图和评审记录均仅保存在本地。
+# 仓库只保存工具代码、格式定义和自动测试。
+data/assets/**
+*.log
+.DS_Store

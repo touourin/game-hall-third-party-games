@@ -1,0 +1,743 @@
+{
+  "schemaVersion": 1,
+  "policy": "deterministic-pixel-rig-v1",
+  "character": "gus",
+  "frame": {
+    "width": 24,
+    "height": 48,
+    "anchor": {
+      "x": 12,
+      "y": 46
+    }
+  },
+  "palette": [
+    "#0D2228",
+    "#17343A",
+    "#31584F",
+    "#426D61",
+    "#4F666B",
+    "#637D81",
+    "#8D9B92",
+    "#A87838",
+    "#B36C4F",
+    "#C4C5B9",
+    "#C99D69",
+    "#D0CCBD",
+    "#D5D8CC",
+    "#EDF0DE",
+    "#F0BD91",
+    "#FFF8DF"
+  ],
+  "directions": [
+    "southeast",
+    "southwest",
+    "northwest",
+    "northeast"
+  ],
+  "componentOrder": [
+    "farLeg",
+    "farArm",
+    "torso",
+    "nearLeg",
+    "nearArm",
+    "head"
+  ],
+  "transformPolicy": {
+    "rotation": false,
+    "scale": false,
+    "interpolation": false,
+    "subpixel": false,
+    "runtimeMirror": false
+  },
+  "readabilityConstraints": {
+    "masterHeight": [
+      35,
+      36
+    ],
+    "headWidth": [
+      17,
+      18
+    ],
+    "headHeight": [
+      16,
+      17
+    ],
+    "visiblePixels": [
+      465,
+      525
+    ],
+    "headAreaRatio": [
+      0.32,
+      0.49
+    ],
+    "maximumInkRatio": 0.32,
+    "minimumArmPixelsOutsideTorso": 16,
+    "minimumDirectionAlphaXor": 24,
+    "minimumOppositeAlphaXor": 24,
+    "minimumLegGapRows": 5,
+    "nearFootBaseline": 45,
+    "farFootBaseline": 44,
+    "walkSupportFootRows": {
+      "nearLeg": 45,
+      "farLeg": 44
+    },
+    "walkFootTravelPerFrame": 2,
+    "minimumArticulation": {
+      "walk": 60,
+      "work": 20
+    },
+    "minimumLegContrastPixels": 20,
+    "backViewDirections": [
+      "northwest",
+      "northeast"
+    ],
+    "maximumBackViewSkinRatio": 0.06,
+    "minimumFrontViewSkinRatio": 0.15,
+    "minimumTorsoTurnPixels": 25
+  },
+  "allowedChangeRegions": {
+    "farLeg": [
+      0,
+      32,
+      24,
+      46
+    ],
+    "nearLeg": [
+      0,
+      32,
+      24,
+      46
+    ],
+    "farArm": [
+      0,
+      24,
+      24,
+      42
+    ],
+    "nearArm": [
+      0,
+      24,
+      24,
+      42
+    ]
+  },
+  "actionConstraints": {
+    "idle": {
+      "offsets": [
+        {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "mutableComponents": []
+    },
+    "walk": {
+      "offsets": [
+        {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 1
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 1
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "mutableComponents": [
+        "farLeg",
+        "farArm",
+        "nearLeg",
+        "nearArm"
+      ],
+      "contactFrames": [
+        0,
+        4
+      ]
+    },
+    "work": {
+      "offsets": [
+        {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 4
+          }
+        },
+        {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 3
+          }
+        }
+      ],
+      "mutableComponents": [
+        "farLeg",
+        "farArm",
+        "nearLeg",
+        "nearArm"
+      ],
+      "mutableBetweenFrames": [
+        "farArm",
+        "nearArm"
+      ],
+      "seatedComponents": [
+        "farLeg",
+        "nearLeg"
+      ]
+    }
+  },
+  "components": {
+    "farLeg": {
+      "file": "far-leg.png",
+      "variants": [
+        "neutral",
+        "stance-0",
+        "stance-1",
+        "stance-2",
+        "stance-3",
+        "stance-4",
+        "swing-0",
+        "swing-1",
+        "swing-2",
+        "seated"
+      ]
+    },
+    "farArm": {
+      "file": "far-arm.png",
+      "variants": [
+        "neutral",
+        "back-1",
+        "back-2",
+        "back-3",
+        "fwd-1",
+        "fwd-2",
+        "fwd-3",
+        "type-down",
+        "type-mid",
+        "type-up"
+      ]
+    },
+    "torso": {
+      "file": "torso.png",
+      "variants": [
+        "neutral"
+      ],
+      "identityLocked": true
+    },
+    "nearLeg": {
+      "file": "near-leg.png",
+      "variants": [
+        "neutral",
+        "stance-0",
+        "stance-1",
+        "stance-2",
+        "stance-3",
+        "stance-4",
+        "swing-0",
+        "swing-1",
+        "swing-2",
+        "seated"
+      ]
+    },
+    "nearArm": {
+      "file": "near-arm.png",
+      "variants": [
+        "neutral",
+        "back-1",
+        "back-2",
+        "back-3",
+        "fwd-1",
+        "fwd-2",
+        "fwd-3",
+        "type-down",
+        "type-mid",
+        "type-up"
+      ]
+    },
+    "head": {
+      "file": "head.png",
+      "variants": [
+        "neutral"
+      ],
+      "identityLocked": true
+    }
+  },
+  "animations": {
+    "idle": [
+      {
+        "name": "idle-0",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "neutral",
+          "farArm": "neutral",
+          "torso": "neutral",
+          "nearLeg": "neutral",
+          "nearArm": "neutral",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "idle-1",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "neutral",
+          "farArm": "neutral",
+          "torso": "neutral",
+          "nearLeg": "neutral",
+          "nearArm": "neutral",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "idle-2",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "variants": {
+          "farLeg": "neutral",
+          "farArm": "neutral",
+          "torso": "neutral",
+          "nearLeg": "neutral",
+          "nearArm": "neutral",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "idle-3",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "variants": {
+          "farLeg": "neutral",
+          "farArm": "neutral",
+          "torso": "neutral",
+          "nearLeg": "neutral",
+          "nearArm": "neutral",
+          "head": "neutral"
+        }
+      }
+    ],
+    "walk": [
+      {
+        "name": "walk-0",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "stance-4",
+          "farArm": "fwd-3",
+          "torso": "neutral",
+          "nearLeg": "stance-0",
+          "nearArm": "back-3",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-1",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 1
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "swing-0",
+          "farArm": "fwd-1",
+          "torso": "neutral",
+          "nearLeg": "stance-1",
+          "nearArm": "back-2",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-2",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "variants": {
+          "farLeg": "swing-1",
+          "farArm": "neutral",
+          "torso": "neutral",
+          "nearLeg": "stance-2",
+          "nearArm": "fwd-1",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-3",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "swing-2",
+          "farArm": "back-1",
+          "torso": "neutral",
+          "nearLeg": "stance-3",
+          "nearArm": "fwd-2",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-4",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "stance-0",
+          "farArm": "back-3",
+          "torso": "neutral",
+          "nearLeg": "stance-4",
+          "nearArm": "fwd-3",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-5",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 1
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "stance-1",
+          "farArm": "back-2",
+          "torso": "neutral",
+          "nearLeg": "swing-0",
+          "nearArm": "fwd-1",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-6",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": -1
+          },
+          "head": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "variants": {
+          "farLeg": "stance-2",
+          "farArm": "fwd-1",
+          "torso": "neutral",
+          "nearLeg": "swing-1",
+          "nearArm": "neutral",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "walk-7",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 0
+          },
+          "head": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "variants": {
+          "farLeg": "stance-3",
+          "farArm": "fwd-2",
+          "torso": "neutral",
+          "nearLeg": "swing-2",
+          "nearArm": "back-1",
+          "head": "neutral"
+        }
+      }
+    ],
+    "work": [
+      {
+        "name": "work-0",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        "variants": {
+          "farLeg": "seated",
+          "farArm": "type-up",
+          "torso": "neutral",
+          "nearLeg": "seated",
+          "nearArm": "type-down",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "work-1",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        "variants": {
+          "farLeg": "seated",
+          "farArm": "type-mid",
+          "torso": "neutral",
+          "nearLeg": "seated",
+          "nearArm": "type-mid",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "work-2",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 4
+          }
+        },
+        "variants": {
+          "farLeg": "seated",
+          "farArm": "type-down",
+          "torso": "neutral",
+          "nearLeg": "seated",
+          "nearArm": "type-up",
+          "head": "neutral"
+        }
+      },
+      {
+        "name": "work-3",
+        "offsets": {
+          "body": {
+            "x": 0,
+            "y": 3
+          },
+          "head": {
+            "x": 0,
+            "y": 3
+          }
+        },
+        "variants": {
+          "farLeg": "seated",
+          "farArm": "type-mid",
+          "torso": "neutral",
+          "nearLeg": "seated",
+          "nearArm": "type-mid",
+          "head": "neutral"
+        }
+      }
+    ]
+  }
+}

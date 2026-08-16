@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "policy": "deterministic-pixel-rig-v1",
+  "activatedAt": "2026-08-10T08:12:49.204Z",
+  "activationCount": 1,
+  "catalogRevision": {
+    "before": 49,
+    "after": 52
+  },
+  "backup": {
+    "path": "data/asset-lab.sqlite3-before-gus-deterministic-v2-20260810-161127-CST.bak",
+    "sha256": "98f8ebcddc51701b463159792f5f19e70c13fdd1112b3d50a869f931875380e3",
+    "integrityCheck": "ok"
+  },
+  "candidate": {
+    "versionId": "version-94133a5aa881482eb2af1de9cd2b4bc4",
+    "pngSha256": "0c28bf991d29f94021295752e5d57e2a487583bd99b91aea31161c354985ad72",
+    "rgbaSha256": "1fd5aab90621c1f3500431d453b36bd3d055cf999d87c9a6844f03338d720821",
+    "motionBuildVerified": true,
+    "identityFramesChecked": 24,
+    "identityFailures": 0
+  },
+  "preRelease": {
+    "id": "release-06d395b40cac4596b9929d0c25f93a61",
+    "manifestSha256": "432f6bb237d7f64d63f871a45722547e1d18d8fc60213d6ae0131a43bac02af2",
+    "atlasSha256": "08cfb39bf3c11d77283c7bc14983d59743f0307bfec103485cfaba5d5d53caca"
+  },
+  "postRelease": {
+    "id": "release-a290dcf7a67141d48eac229cbe975133",
+    "manifestSha256": "6abd2bdec8bf8c80d07bb583001232d64af7a798577d7c67343823715f261dd0",
+    "atlasSha256": "fc82f6e2c0c84c642952f42a9f9b7a1873be96e08e66b1d801f427599db86607",
+    "identityLocked": true,
+    "trustedLegacyAcceptedMotionPresent": false,
+    "atlasContainsExactCandidateRgba": true
+  },
+  "existingRuns": {
+    "count": 15,
+    "bindingsBeforeSha256": "99e0a9e7f14834c9072a35573f9f6b9b3e692979f006ffab2d9c3296325c37f0",
+    "bindingsAfterSha256": "99e0a9e7f14834c9072a35573f9f6b9b3e692979f006ffab2d9c3296325c37f0",
+    "unchanged": true
+  }
+}

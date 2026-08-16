@@ -1,0 +1,791 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://game-hall.local/codex/assets/manifest.schema.json",
+  "title": "Codex versioned isometric asset manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "grid",
+    "characterFrame",
+    "palette",
+    "atlases",
+    "sheets",
+    "requiredSlots",
+    "assets",
+    "animations",
+    "fixtures"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "geometryVersion": {
+      "type": "integer",
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseReleaseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sceneShell": {
+      "$ref": "#/$defs/sceneShell"
+    },
+    "grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tileWidth",
+        "tileHeight",
+        "elevation",
+        "depthRule"
+      ],
+      "properties": {
+        "tileWidth": {
+          "const": 32
+        },
+        "tileHeight": {
+          "const": 16
+        },
+        "elevation": {
+          "const": 8
+        },
+        "depthRule": {
+          "const": "max-x-plus-y"
+        }
+      }
+    },
+    "characterFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "const": 24
+        },
+        "height": {
+          "const": 48
+        }
+      }
+    },
+    "characterMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy",
+        "identityLocked",
+        "fallback",
+        "canonicalFrames"
+      ],
+      "properties": {
+        "policy": {
+          "const": "canonical-idle-v1"
+        },
+        "identityLocked": {
+          "type": "boolean"
+        },
+        "trustedLegacyAcceptedMotion": {
+          "type": "boolean"
+        },
+        "fallback": {
+          "const": "canonical-idle-bob"
+        },
+        "canonicalFrames": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "southeast",
+            "southwest",
+            "northwest",
+            "northeast"
+          ],
+          "properties": {
+            "southeast": {
+              "const": "character.gus.southeast.idle"
+            },
+            "southwest": {
+              "const": "character.gus.southwest.idle"
+            },
+            "northwest": {
+              "const": "character.gus.northwest.idle"
+            },
+            "northeast": {
+              "const": "character.gus.northeast.idle"
+            }
+          }
+        }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "world",
+        "players"
+      ],
+      "properties": {
+        "world": {
+          "type": "array",
+          "minItems": 32,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/color"
+          }
+        },
+        "players": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/color"
+          }
+        }
+      }
+    },
+    "atlases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/atlas"
+      }
+    },
+    "sheets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/sheet"
+      }
+    },
+    "requiredSlots": {
+      "type": "array",
+      "minItems": 11,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    },
+    "animations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/animation"
+      }
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/fixture"
+      }
+    }
+  },
+  "$defs": {
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        }
+      }
+    },
+    "sceneShell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "type",
+        "facadeDepth",
+        "slabDepth",
+        "windowBandPitch",
+        "colors"
+      ],
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "type": {
+          "const": "cutaway-office-tower"
+        },
+        "facadeDepth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "slabDepth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "windowBandPitch": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "colors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "outline",
+            "ambientOcclusion",
+            "slab",
+            "facadeLight",
+            "facadeDark",
+            "window",
+            "mullion"
+          ],
+          "properties": {
+            "outline": {
+              "$ref": "#/$defs/color"
+            },
+            "ambientOcclusion": {
+              "$ref": "#/$defs/color"
+            },
+            "slab": {
+              "$ref": "#/$defs/color"
+            },
+            "facadeLight": {
+              "$ref": "#/$defs/color"
+            },
+            "facadeDark": {
+              "$ref": "#/$defs/color"
+            },
+            "window": {
+              "$ref": "#/$defs/color"
+            },
+            "mullion": {
+              "$ref": "#/$defs/color"
+            }
+          }
+        }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "footprintCell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "blocked"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "blocked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "atlas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "width",
+        "height",
+        "padding"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "padding": {
+          "type": "integer",
+          "minimum": 2
+        }
+      }
+    },
+    "sheet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "atlas",
+        "frame",
+        "columns",
+        "rows",
+        "cellWidth",
+        "cellHeight"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "atlas": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "$ref": "#/$defs/frame"
+        },
+        "columns": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cellWidth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cellHeight": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slot",
+        "kind",
+        "atlas",
+        "frame",
+        "anchor",
+        "offset",
+        "footprint",
+        "collision",
+        "layer"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "slot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "floor",
+            "prop",
+            "furniture",
+            "character",
+            "effect",
+            "backdrop",
+            "structure",
+            "decor"
+          ]
+        },
+        "atlas": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sheet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "$ref": "#/$defs/frame"
+        },
+        "anchor": {
+          "$ref": "#/$defs/point"
+        },
+        "orientation": {
+          "enum": [
+            "nw",
+            "ne"
+          ]
+        },
+        "groundAxis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "start",
+            "end"
+          ],
+          "properties": {
+            "start": {
+              "$ref": "#/$defs/point"
+            },
+            "end": {
+              "$ref": "#/$defs/point"
+            }
+          }
+        },
+        "wallFaceHeight": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "paneAlpha": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 254
+        },
+        "paneCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "offset": {
+          "$ref": "#/$defs/point"
+        },
+        "footprint": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/footprintCell"
+          }
+        },
+        "collision": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/point"
+          }
+        },
+        "interactionPoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interactionPoint"
+          }
+        },
+        "layer": {
+          "type": "integer"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "orientation"
+            ],
+            "properties": {
+              "kind": {
+                "const": "structure"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "groundAxis",
+              "wallFaceHeight"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "slot"
+            ],
+            "properties": {
+              "slot": {
+                "pattern": "^structure\\.wall-window-"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "paneAlpha",
+              "paneCount"
+            ]
+          }
+        }
+      ]
+    },
+    "interactionPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "x",
+        "y",
+        "facing"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "work-seat"
+        },
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "facing": {
+          "enum": [
+            "southeast",
+            "southwest",
+            "northwest",
+            "northeast"
+          ]
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slot",
+        "anchor",
+        "frameDurationMs",
+        "loop",
+        "frames"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "slot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchor": {
+          "$ref": "#/$defs/point"
+        },
+        "frameDurationMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "loop": {
+          "type": "boolean"
+        },
+        "frames": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "frameDurationsMs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": "可选：逐帧时长，长度必须等于 frames。缺省时每帧都用 frameDurationMs。"
+        },
+        "motion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "strideScreenPx",
+            "framesPerStep"
+          ],
+          "properties": {
+            "strideScreenPx": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "framesPerStep": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "description": "可选：位移驱动的步态元数据，让运行时用实际屏幕位移推进相位而不是靠时间。"
+        }
+      }
+    },
+    "placement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "x",
+        "y"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "animationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "elapsedMs": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "assetId"
+          ],
+          "not": {
+            "required": [
+              "animationId"
+            ]
+          }
+        },
+        {
+          "required": [
+            "animationId"
+          ],
+          "not": {
+            "required": [
+              "assetId"
+            ]
+          }
+        }
+      ]
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "zoom"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "zoom": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "columns",
+        "rows",
+        "origin",
+        "camera",
+        "placements"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "columns": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "origin": {
+          "$ref": "#/$defs/point"
+        },
+        "camera": {
+          "$ref": "#/$defs/camera"
+        },
+        "placements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/placement"
+          }
+        }
+      }
+    }
+  }
+}

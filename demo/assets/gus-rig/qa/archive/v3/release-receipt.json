@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "policy": "deterministic-pixel-rig-v1",
+  "candidateId": "deterministic-gus-motion-v3.1",
+  "activatedAt": "2026-08-10T10:02:05.750Z",
+  "activationCount": 1,
+  "catalogRevision": {
+    "before": 53,
+    "after": 56
+  },
+  "backup": {
+    "path": "data/asset-lab.sqlite3-before-gus-deterministic-v3.1-20260810-180105-CST.bak",
+    "sha256": "c1d167ab70c159efa5f8d684aea7ec8cb3f33003e20c2291dee4efd665c27a92",
+    "integrityCheck": "ok"
+  },
+  "candidate": {
+    "versionId": "version-69f6ee6055bc4f02ac9d43d4d5a3e549",
+    "pngSha256": "ab7a888148010bd2561a21a65b2c9db9f7cd8ada3f2121bae301b6158aef8855",
+    "rgbaSha256": "f8cf957e96cb39dd6ab4bc74240bec5561d0f1b1f42cf5e1001d31d6882c2802",
+    "rigSha256": "414e4bfa0d2a553bb5fb6be499e1324d55fe502731b358f02606df96128a94c1",
+    "layerSetSha256": "70428bdbf0ac60ef15a4b8871e9d0cf8b87fa34548ae87edcce7d4d31552d711",
+    "motionBuildVerified": true,
+    "identityFramesChecked": 24,
+    "identityFailures": 0
+  },
+  "nativeSceneQa": {
+    "isolated": true,
+    "layoutId": "world.mid-growth-v2",
+    "idleSha256": "13bfc11bc8d03443d245f81e83ef5e880ec6799e9d7f7955c3e05ed5577f5cd0",
+    "walkSha256": "2fcfd5a590f64115dbf34897524bcc40b30b68ce536b88193a9def32aebe7953",
+    "workSha256": "ce083db5d5c0de3c1028a8c0f0691a84a9697ea7f1575b3232d7a827518e73a6",
+    "workState": "active",
+    "workSeat": "seat-se",
+    "workFacing": "northwest"
+  },
+  "preRelease": {
+    "id": "release-a290dcf7a67141d48eac229cbe975133",
+    "manifestSha256": "6abd2bdec8bf8c80d07bb583001232d64af7a798577d7c67343823715f261dd0",
+    "atlasSha256": "fc82f6e2c0c84c642952f42a9f9b7a1873be96e08e66b1d801f427599db86607"
+  },
+  "postRelease": {
+    "id": "release-aadfd00f83a44c9ba7a59702c0112fc9",
+    "manifestSha256": "d9decb9054feb14f913087eb166b042d21e021db0e8ade9042b95ec57864ecfc",
+    "atlasSha256": "a5841e3f4c6cc6bb6788607c52cde00cf288ed73ceaf39838ce19b497fb67f2c",
+    "identityLocked": true,
+    "trustedLegacyAcceptedMotionPresent": false,
+    "atlasContainsExactCandidateRgba": true
+  },
+  "existingRuns": {
+    "count": 18,
+    "bindingsSha256": "986bdd95aeb4caafb50201b86a7beff3ab562a13b27410c2e0d194fec618cdf2",
+    "previousReleaseBindings": 3,
+    "newReleaseBindings": 0,
+    "unchanged": true
+  },
+  "tests": {
+    "python": "101 passed",
+    "node": "82 passed",
+    "characterRegression": "12 passed"
+  }
+}

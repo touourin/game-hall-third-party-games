@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "geometryVersion": 2,
+  "id": "core-v2",
+  "name": "Core v2",
+  "basePackId": "core-v1",
+  "styleProfileId": "beijing-modern-isometric-v2",
+  "nativeFrameRequired": true,
+  "alphaLevels": [0, 96, 128, 160, 192, 255],
+  "grid": {
+    "tileWidth": 32,
+    "tileHeight": 16,
+    "elevation": 8,
+    "depthRule": "max-x-plus-y"
+  },
+  "sceneShell": {
+    "version": 1,
+    "type": "cutaway-office-tower",
+    "facadeDepth": 512,
+    "slabDepth": 8,
+    "windowBandPitch": 12,
+    "colors": {
+      "outline": "#0D2228",
+      "ambientOcclusion": "#0D2228",
+      "slab": "#566169",
+      "facadeLight": "#557F9C",
+      "facadeDark": "#3D6078",
+      "window": "#729FBE",
+      "mullion": "#3B454C"
+    }
+  },
+  "palette": {
+    "world": [
+      "#0D2228", "#17343A", "#31584F", "#426D61", "#4F666B", "#637D81", "#687C79", "#75878A",
+      "#777F79", "#846F5A", "#88634A", "#8D6964", "#8D9B92", "#94A29F", "#A87838", "#A9AA9E",
+      "#A9B6AD", "#B36C4F", "#B8AD99", "#BA6C59", "#C3B99C", "#C4C5B9", "#C7C4B7", "#C99D69",
+      "#D0CCBD", "#D2C9AA", "#D5D8CC", "#E1D5B1", "#EDF0DE", "#F0BD91", "#FFF2CB", "#FFF8DF",
+      "#A9D1E8", "#8EBBD6", "#729FBE", "#557F9C", "#3D6078", "#D8E5EA", "#BBCDD5", "#9DB2BD",
+      "#566169", "#3B454C", "#6A4935", "#95613E", "#C4864E", "#284436", "#496B47", "#78945B"
+    ],
+    "players": [
+      "#ED806C", "#75BD9F", "#78AABC", "#F1BF65",
+      "#A88BC2", "#DC8EB0", "#82AE68", "#DC9765"
+    ]
+  },
+  "overrideSlots": [
+    "backdrop.beijing-cbd",
+    "floor.raw-concrete",
+    "floor.utility-border",
+    "structure.wall-solid-nw",
+    "structure.wall-solid-ne",
+    "structure.wall-window-nw",
+    "structure.wall-window-ne",
+    "structure.wall-door-ne",
+    "structure.corner-column"
+  ],
+  "requiredNewSlots": [
+    "furniture.focus-desk-nw",
+    "furniture.focus-desk-ne",
+    "furniture.media-console",
+    "furniture.prototype-bench",
+    "furniture.low-bookcase",
+    "furniture.entry-bench",
+    "decor.pinboard-stand"
+  ],
+  "requiredEditableSlots": [
+    "backdrop.beijing-cbd",
+    "floor.raw-concrete",
+    "floor.utility-border",
+    "structure.wall-solid-nw",
+    "structure.wall-solid-ne",
+    "structure.wall-window-nw",
+    "structure.wall-window-ne",
+    "structure.wall-door-ne",
+    "structure.corner-column",
+    "furniture.focus-desk-nw",
+    "furniture.focus-desk-ne",
+    "furniture.media-console",
+    "furniture.prototype-bench",
+    "furniture.low-bookcase",
+    "furniture.entry-bench",
+    "decor.pinboard-stand"
+  ],
+  "previewScenes": [
+    {
+      "id": "opening",
+      "label": "Opening Office",
+      "layoutId": "world.opening-empty-v2",
+      "sourceName": "world-opening-empty-v2-candidate.png"
+    },
+    {
+      "id": "mid-growth",
+      "label": "Mid-growth Office",
+      "layoutId": "world.mid-growth-v3",
+      "sourceName": "world-mid-growth-v3-candidate.png"
+    }
+  ],
+  "baseAssetPatches": {},
+  "assets": [
+    {
+      "id": "backdrop.beijing-cbd", "slot": "backdrop.beijing-cbd", "kind": "backdrop",
+      "frame": { "x": 0, "y": 0, "width": 640, "height": 360 },
+      "anchor": { "x": 320, "y": 356 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": false }], "collision": [], "layer": -20
+    },
+    {
+      "id": "floor.raw-concrete", "slot": "floor.raw-concrete", "kind": "floor",
+      "frame": { "x": 0, "y": 0, "width": 32, "height": 16 },
+      "anchor": { "x": 16, "y": 8 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": false }], "collision": [], "layer": -10
+    },
+    {
+      "id": "floor.utility-border", "slot": "floor.utility-border", "kind": "floor",
+      "frame": { "x": 0, "y": 0, "width": 32, "height": 16 },
+      "anchor": { "x": 16, "y": 8 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": false }], "collision": [], "layer": -9
+    },
+    {
+      "id": "structure.wall-solid-nw", "slot": "structure.wall-solid-nw", "kind": "structure", "orientation": "nw",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 88 },
+      "anchor": { "x": 48, "y": 75 }, "offset": { "x": 0, "y": 0 },
+      "groundAxis": { "start": { "x": 24, "y": 63 }, "end": { "x": 72, "y": 87 } },
+      "wallFaceHeight": 56,
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-solid-ne", "slot": "structure.wall-solid-ne", "kind": "structure", "orientation": "ne",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 88 },
+      "anchor": { "x": 48, "y": 75 }, "offset": { "x": 0, "y": 0 },
+      "groundAxis": { "start": { "x": 24, "y": 87 }, "end": { "x": 72, "y": 63 } },
+      "wallFaceHeight": 56,
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": true }, { "x": 0, "y": 2, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 0, "y": 1 }, { "x": 0, "y": 2 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-window-nw", "slot": "structure.wall-window-nw", "kind": "structure", "orientation": "nw",
+      "frame": { "x": 0, "y": 0, "width": 128, "height": 96 },
+      "anchor": { "x": 64, "y": 79 }, "offset": { "x": 0, "y": 0 },
+      "groundAxis": { "start": { "x": 32, "y": 63 }, "end": { "x": 96, "y": 95 } },
+      "wallFaceHeight": 56,
+      "paneAlpha": 128,
+      "paneCount": 4,
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }, { "x": 3, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }, { "x": 3, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-window-ne", "slot": "structure.wall-window-ne", "kind": "structure", "orientation": "ne",
+      "frame": { "x": 0, "y": 0, "width": 128, "height": 96 },
+      "anchor": { "x": 64, "y": 79 }, "offset": { "x": 0, "y": 0 },
+      "groundAxis": { "start": { "x": 32, "y": 95 }, "end": { "x": 96, "y": 63 } },
+      "wallFaceHeight": 56,
+      "paneAlpha": 128,
+      "paneCount": 4,
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": true }, { "x": 0, "y": 2, "blocked": true }, { "x": 0, "y": 3, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 0, "y": 1 }, { "x": 0, "y": 2 }, { "x": 0, "y": 3 }], "layer": 0
+    },
+    {
+      "id": "structure.wall-door-ne", "slot": "structure.wall-door-ne", "kind": "structure", "orientation": "ne",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 88 },
+      "anchor": { "x": 48, "y": 75 }, "offset": { "x": 0, "y": 0 },
+      "groundAxis": { "start": { "x": 24, "y": 87 }, "end": { "x": 72, "y": 63 } },
+      "wallFaceHeight": 56,
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": false }, { "x": 0, "y": 2, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 0, "y": 2 }], "layer": 0
+    },
+    {
+      "id": "structure.corner-column", "slot": "structure.corner-column", "kind": "structure",
+      "frame": { "x": 0, "y": 0, "width": 32, "height": 88 },
+      "anchor": { "x": 16, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }], "collision": [{ "x": 0, "y": 0 }], "layer": 1
+    },
+    {
+      "id": "furniture.focus-desk-nw", "slot": "furniture.focus-desk-nw", "kind": "furniture", "orientation": "nw",
+      "frame": { "x": 0, "y": 0, "width": 80, "height": 80 },
+      "anchor": { "x": 40, "y": 70 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": true }, { "x": 1, "y": 1, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 0, "y": 1 }, { "x": 1, "y": 1 }],
+      "interactionPoints": [{ "id": "seat-work", "kind": "work-seat", "x": 1, "y": 2, "facing": "northwest" }], "layer": 0
+    },
+    {
+      "id": "furniture.focus-desk-ne", "slot": "furniture.focus-desk-ne", "kind": "furniture", "orientation": "ne",
+      "frame": { "x": 0, "y": 0, "width": 80, "height": 80 },
+      "anchor": { "x": 40, "y": 70 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 0, "y": 1, "blocked": true }, { "x": 1, "y": 1, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 0, "y": 1 }, { "x": 1, "y": 1 }],
+      "interactionPoints": [{ "id": "seat-work", "kind": "work-seat", "x": -1, "y": 1, "facing": "northeast" }], "layer": 0
+    },
+    {
+      "id": "furniture.media-console", "slot": "furniture.media-console", "kind": "furniture",
+      "frame": { "x": 0, "y": 0, "width": 112, "height": 88 },
+      "anchor": { "x": 56, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "furniture.prototype-bench", "slot": "furniture.prototype-bench", "kind": "furniture",
+      "frame": { "x": 0, "y": 0, "width": 112, "height": 88 },
+      "anchor": { "x": 56, "y": 80 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "furniture.low-bookcase", "slot": "furniture.low-bookcase", "kind": "furniture",
+      "frame": { "x": 0, "y": 0, "width": 80, "height": 64 },
+      "anchor": { "x": 40, "y": 56 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "furniture.entry-bench", "slot": "furniture.entry-bench", "kind": "furniture",
+      "frame": { "x": 0, "y": 0, "width": 96, "height": 56 },
+      "anchor": { "x": 48, "y": 48 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }, { "x": 2, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }], "layer": 0
+    },
+    {
+      "id": "decor.pinboard-stand", "slot": "decor.pinboard-stand", "kind": "decor",
+      "frame": { "x": 0, "y": 0, "width": 64, "height": 72 },
+      "anchor": { "x": 32, "y": 64 }, "offset": { "x": 0, "y": 0 },
+      "footprint": [{ "x": 0, "y": 0, "blocked": true }, { "x": 1, "y": 0, "blocked": true }],
+      "collision": [{ "x": 0, "y": 0 }, { "x": 1, "y": 0 }], "layer": 0
+    }
+  ]
+}

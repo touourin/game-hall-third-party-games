@@ -1,0 +1,2963 @@
+{
+  "$schema": "./manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "core-v0",
+  "grid": {
+    "tileWidth": 32,
+    "tileHeight": 16,
+    "elevation": 8,
+    "depthRule": "max-x-plus-y"
+  },
+  "characterFrame": {
+    "width": 24,
+    "height": 48
+  },
+  "characterMotion": {
+    "policy": "canonical-idle-v1",
+    "identityLocked": true,
+    "fallback": "canonical-idle-bob",
+    "canonicalFrames": {
+      "southeast": "character.gus.southeast.idle",
+      "southwest": "character.gus.southwest.idle",
+      "northwest": "character.gus.northwest.idle",
+      "northeast": "character.gus.northeast.idle"
+    }
+  },
+  "palette": {
+    "world": [
+      "#0D2228",
+      "#17343A",
+      "#31584F",
+      "#426D61",
+      "#4F666B",
+      "#637D81",
+      "#687C79",
+      "#75878A",
+      "#777F79",
+      "#846F5A",
+      "#88634A",
+      "#8D6964",
+      "#8D9B92",
+      "#94A29F",
+      "#A87838",
+      "#A9AA9E",
+      "#A9B6AD",
+      "#B36C4F",
+      "#B8AD99",
+      "#BA6C59",
+      "#C3B99C",
+      "#C4C5B9",
+      "#C7C4B7",
+      "#C99D69",
+      "#D0CCBD",
+      "#D2C9AA",
+      "#D5D8CC",
+      "#E1D5B1",
+      "#EDF0DE",
+      "#F0BD91",
+      "#FFF2CB",
+      "#FFF8DF"
+    ],
+    "players": [
+      "#ED806C",
+      "#75BD9F",
+      "#78AABC",
+      "#F1BF65",
+      "#A88BC2",
+      "#DC8EB0",
+      "#82AE68",
+      "#DC9765"
+    ]
+  },
+  "atlases": [
+    {
+      "id": "core-v0",
+      "source": "core-v0.png",
+      "width": 512,
+      "height": 512,
+      "padding": 2
+    }
+  ],
+  "sheets": [
+    {
+      "id": "character.gus",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 316,
+        "width": 384,
+        "height": 192
+      },
+      "columns": 16,
+      "rows": 4,
+      "cellWidth": 24,
+      "cellHeight": 48
+    }
+  ],
+  "requiredSlots": [
+    "floor.raw-concrete",
+    "floor.patched-concrete",
+    "floor.light-wood",
+    "floor.utility-border",
+    "furniture.moving-box",
+    "furniture.desk-island",
+    "furniture.storage-cabinet",
+    "furniture.tea-coffee-bar",
+    "furniture.meeting-table",
+    "character.gus",
+    "effect.good-card-heart"
+  ],
+  "assets": [
+    {
+      "id": "floor.raw-concrete",
+      "slot": "floor.raw-concrete",
+      "kind": "floor",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "width": 32,
+        "height": 16
+      },
+      "anchor": {
+        "x": 16,
+        "y": 8
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": -10
+    },
+    {
+      "id": "floor.patched-concrete",
+      "slot": "floor.patched-concrete",
+      "kind": "floor",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 36,
+        "y": 2,
+        "width": 32,
+        "height": 16
+      },
+      "anchor": {
+        "x": 16,
+        "y": 8
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": -10
+    },
+    {
+      "id": "floor.light-wood",
+      "slot": "floor.light-wood",
+      "kind": "floor",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 70,
+        "y": 2,
+        "width": 32,
+        "height": 16
+      },
+      "anchor": {
+        "x": 16,
+        "y": 8
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": -10
+    },
+    {
+      "id": "floor.utility-border",
+      "slot": "floor.utility-border",
+      "kind": "floor",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 104,
+        "y": 2,
+        "width": 32,
+        "height": 16
+      },
+      "anchor": {
+        "x": 16,
+        "y": 8
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": -10
+    },
+    {
+      "id": "furniture.moving-box",
+      "slot": "furniture.moving-box",
+      "kind": "furniture",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 22,
+        "width": 48,
+        "height": 64
+      },
+      "anchor": {
+        "x": 24,
+        "y": 52
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": true
+        }
+      ],
+      "collision": [
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "layer": 0
+    },
+    {
+      "id": "furniture.desk-island",
+      "slot": "furniture.desk-island",
+      "kind": "furniture",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 52,
+        "y": 22,
+        "width": 96,
+        "height": 80
+      },
+      "anchor": {
+        "x": 48,
+        "y": 64
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "blocked": true
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "blocked": true
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "blocked": true
+        }
+      ],
+      "collision": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        }
+      ],
+      "layer": 0
+    },
+    {
+      "id": "furniture.storage-cabinet",
+      "slot": "furniture.storage-cabinet",
+      "kind": "furniture",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 150,
+        "y": 22,
+        "width": 80,
+        "height": 72
+      },
+      "anchor": {
+        "x": 40,
+        "y": 64
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "blocked": true
+        }
+      ],
+      "collision": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        }
+      ],
+      "layer": 0
+    },
+    {
+      "id": "furniture.tea-coffee-bar",
+      "slot": "furniture.tea-coffee-bar",
+      "kind": "furniture",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 232,
+        "y": 22,
+        "width": 80,
+        "height": 72
+      },
+      "anchor": {
+        "x": 40,
+        "y": 64
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "blocked": true
+        }
+      ],
+      "collision": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        }
+      ],
+      "layer": 0
+    },
+    {
+      "id": "furniture.meeting-table",
+      "slot": "furniture.meeting-table",
+      "kind": "furniture",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 314,
+        "y": 22,
+        "width": 128,
+        "height": 96
+      },
+      "anchor": {
+        "x": 64,
+        "y": 80
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "blocked": true
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "blocked": true
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "blocked": true
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "blocked": true
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "blocked": true
+        }
+      ],
+      "collision": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 1,
+          "y": 0
+        },
+        {
+          "x": 2,
+          "y": 0
+        },
+        {
+          "x": 3,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 1,
+          "y": 1
+        },
+        {
+          "x": 2,
+          "y": 1
+        },
+        {
+          "x": 3,
+          "y": 1
+        }
+      ],
+      "layer": 0
+    },
+    {
+      "id": "character.gus.southeast.idle",
+      "slot": "frame.character.gus.southeast.idle",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.idle.1",
+      "slot": "frame.character.gus.southeast.idle.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 26,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.idle.2",
+      "slot": "frame.character.gus.southeast.idle.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 50,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.idle.3",
+      "slot": "frame.character.gus.southeast.idle.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 74,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.0",
+      "slot": "frame.character.gus.southeast.walk.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 98,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.1",
+      "slot": "frame.character.gus.southeast.walk.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 122,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.2",
+      "slot": "frame.character.gus.southeast.walk.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 146,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.3",
+      "slot": "frame.character.gus.southeast.walk.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 170,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.4",
+      "slot": "frame.character.gus.southeast.walk.4",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 194,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.5",
+      "slot": "frame.character.gus.southeast.walk.5",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 218,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.6",
+      "slot": "frame.character.gus.southeast.walk.6",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 242,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.walk.7",
+      "slot": "frame.character.gus.southeast.walk.7",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 266,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.work.0",
+      "slot": "frame.character.gus.southeast.work.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 290,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.work.1",
+      "slot": "frame.character.gus.southeast.work.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 314,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.work.2",
+      "slot": "frame.character.gus.southeast.work.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 338,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southeast.work.3",
+      "slot": "frame.character.gus.southeast.work.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 362,
+        "y": 316,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.idle",
+      "slot": "frame.character.gus.southwest.idle",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.idle.1",
+      "slot": "frame.character.gus.southwest.idle.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 26,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.idle.2",
+      "slot": "frame.character.gus.southwest.idle.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 50,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.idle.3",
+      "slot": "frame.character.gus.southwest.idle.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 74,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.0",
+      "slot": "frame.character.gus.southwest.walk.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 98,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.1",
+      "slot": "frame.character.gus.southwest.walk.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 122,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.2",
+      "slot": "frame.character.gus.southwest.walk.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 146,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.3",
+      "slot": "frame.character.gus.southwest.walk.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 170,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.4",
+      "slot": "frame.character.gus.southwest.walk.4",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 194,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.5",
+      "slot": "frame.character.gus.southwest.walk.5",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 218,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.6",
+      "slot": "frame.character.gus.southwest.walk.6",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 242,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.walk.7",
+      "slot": "frame.character.gus.southwest.walk.7",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 266,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.work.0",
+      "slot": "frame.character.gus.southwest.work.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 290,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.work.1",
+      "slot": "frame.character.gus.southwest.work.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 314,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.work.2",
+      "slot": "frame.character.gus.southwest.work.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 338,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.southwest.work.3",
+      "slot": "frame.character.gus.southwest.work.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 362,
+        "y": 364,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.idle",
+      "slot": "frame.character.gus.northwest.idle",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.idle.1",
+      "slot": "frame.character.gus.northwest.idle.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 26,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.idle.2",
+      "slot": "frame.character.gus.northwest.idle.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 50,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.idle.3",
+      "slot": "frame.character.gus.northwest.idle.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 74,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.0",
+      "slot": "frame.character.gus.northwest.walk.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 98,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.1",
+      "slot": "frame.character.gus.northwest.walk.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 122,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.2",
+      "slot": "frame.character.gus.northwest.walk.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 146,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.3",
+      "slot": "frame.character.gus.northwest.walk.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 170,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.4",
+      "slot": "frame.character.gus.northwest.walk.4",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 194,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.5",
+      "slot": "frame.character.gus.northwest.walk.5",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 218,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.6",
+      "slot": "frame.character.gus.northwest.walk.6",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 242,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.walk.7",
+      "slot": "frame.character.gus.northwest.walk.7",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 266,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.work.0",
+      "slot": "frame.character.gus.northwest.work.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 290,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.work.1",
+      "slot": "frame.character.gus.northwest.work.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 314,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.work.2",
+      "slot": "frame.character.gus.northwest.work.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 338,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northwest.work.3",
+      "slot": "frame.character.gus.northwest.work.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 362,
+        "y": 412,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.idle",
+      "slot": "frame.character.gus.northeast.idle",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 2,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.idle.1",
+      "slot": "frame.character.gus.northeast.idle.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 26,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.idle.2",
+      "slot": "frame.character.gus.northeast.idle.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 50,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.idle.3",
+      "slot": "frame.character.gus.northeast.idle.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 74,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.0",
+      "slot": "frame.character.gus.northeast.walk.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 98,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.1",
+      "slot": "frame.character.gus.northeast.walk.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 122,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.2",
+      "slot": "frame.character.gus.northeast.walk.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 146,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.3",
+      "slot": "frame.character.gus.northeast.walk.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 170,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.4",
+      "slot": "frame.character.gus.northeast.walk.4",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 194,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.5",
+      "slot": "frame.character.gus.northeast.walk.5",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 218,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.6",
+      "slot": "frame.character.gus.northeast.walk.6",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 242,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.walk.7",
+      "slot": "frame.character.gus.northeast.walk.7",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 266,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.work.0",
+      "slot": "frame.character.gus.northeast.work.0",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 290,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.work.1",
+      "slot": "frame.character.gus.northeast.work.1",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 314,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.work.2",
+      "slot": "frame.character.gus.northeast.work.2",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 338,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "character.gus.northeast.work.3",
+      "slot": "frame.character.gus.northeast.work.3",
+      "kind": "character",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 362,
+        "y": 460,
+        "width": 24,
+        "height": 48
+      },
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 2
+    },
+    {
+      "id": "effect.good-card-heart.0",
+      "slot": "frame.effect.good-card-heart.0",
+      "kind": "effect",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 172,
+        "y": 122,
+        "width": 24,
+        "height": 24
+      },
+      "anchor": {
+        "x": 12,
+        "y": 20
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 4
+    },
+    {
+      "id": "effect.good-card-heart.1",
+      "slot": "frame.effect.good-card-heart.1",
+      "kind": "effect",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 198,
+        "y": 122,
+        "width": 24,
+        "height": 24
+      },
+      "anchor": {
+        "x": 12,
+        "y": 20
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 4
+    },
+    {
+      "id": "effect.good-card-heart.2",
+      "slot": "frame.effect.good-card-heart.2",
+      "kind": "effect",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 224,
+        "y": 122,
+        "width": 24,
+        "height": 24
+      },
+      "anchor": {
+        "x": 12,
+        "y": 20
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 4
+    },
+    {
+      "id": "effect.good-card-heart.3",
+      "slot": "frame.effect.good-card-heart.3",
+      "kind": "effect",
+      "atlas": "core-v0",
+      "frame": {
+        "x": 250,
+        "y": 122,
+        "width": 24,
+        "height": 24
+      },
+      "anchor": {
+        "x": 12,
+        "y": 20
+      },
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": [
+        {
+          "x": 0,
+          "y": 0,
+          "blocked": false
+        }
+      ],
+      "collision": [],
+      "layer": 4
+    }
+  ],
+  "animations": [
+    {
+      "id": "animation.gus.southeast.idle",
+      "slot": "character.gus",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 550,
+      "loop": true,
+      "frames": [
+        "character.gus.southeast.idle",
+        "character.gus.southeast.idle.1",
+        "character.gus.southeast.idle.2",
+        "character.gus.southeast.idle.3"
+      ],
+      "frameDurationsMs": [
+        700,
+        400,
+        700,
+        400
+      ]
+    },
+    {
+      "id": "animation.gus.southeast.walk",
+      "slot": "animation.gus.southeast.walk",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 51,
+      "loop": true,
+      "frames": [
+        "character.gus.southeast.walk.0",
+        "character.gus.southeast.walk.1",
+        "character.gus.southeast.walk.2",
+        "character.gus.southeast.walk.3",
+        "character.gus.southeast.walk.4",
+        "character.gus.southeast.walk.5",
+        "character.gus.southeast.walk.6",
+        "character.gus.southeast.walk.7"
+      ],
+      "motion": {
+        "strideScreenPx": 8,
+        "framesPerStep": 4
+      }
+    },
+    {
+      "id": "animation.gus.southeast.work",
+      "slot": "animation.gus.southeast.work",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 110,
+      "loop": true,
+      "frames": [
+        "character.gus.southeast.work.0",
+        "character.gus.southeast.work.1",
+        "character.gus.southeast.work.2",
+        "character.gus.southeast.work.3"
+      ]
+    },
+    {
+      "id": "animation.gus.southwest.idle",
+      "slot": "animation.gus.southwest.idle",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 550,
+      "loop": true,
+      "frames": [
+        "character.gus.southwest.idle",
+        "character.gus.southwest.idle.1",
+        "character.gus.southwest.idle.2",
+        "character.gus.southwest.idle.3"
+      ],
+      "frameDurationsMs": [
+        700,
+        400,
+        700,
+        400
+      ]
+    },
+    {
+      "id": "animation.gus.southwest.walk",
+      "slot": "animation.gus.southwest.walk",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 51,
+      "loop": true,
+      "frames": [
+        "character.gus.southwest.walk.0",
+        "character.gus.southwest.walk.1",
+        "character.gus.southwest.walk.2",
+        "character.gus.southwest.walk.3",
+        "character.gus.southwest.walk.4",
+        "character.gus.southwest.walk.5",
+        "character.gus.southwest.walk.6",
+        "character.gus.southwest.walk.7"
+      ],
+      "motion": {
+        "strideScreenPx": 8,
+        "framesPerStep": 4
+      }
+    },
+    {
+      "id": "animation.gus.southwest.work",
+      "slot": "animation.gus.southwest.work",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 110,
+      "loop": true,
+      "frames": [
+        "character.gus.southwest.work.0",
+        "character.gus.southwest.work.1",
+        "character.gus.southwest.work.2",
+        "character.gus.southwest.work.3"
+      ]
+    },
+    {
+      "id": "animation.gus.northwest.idle",
+      "slot": "animation.gus.northwest.idle",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 550,
+      "loop": true,
+      "frames": [
+        "character.gus.northwest.idle",
+        "character.gus.northwest.idle.1",
+        "character.gus.northwest.idle.2",
+        "character.gus.northwest.idle.3"
+      ],
+      "frameDurationsMs": [
+        700,
+        400,
+        700,
+        400
+      ]
+    },
+    {
+      "id": "animation.gus.northwest.walk",
+      "slot": "animation.gus.northwest.walk",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 51,
+      "loop": true,
+      "frames": [
+        "character.gus.northwest.walk.0",
+        "character.gus.northwest.walk.1",
+        "character.gus.northwest.walk.2",
+        "character.gus.northwest.walk.3",
+        "character.gus.northwest.walk.4",
+        "character.gus.northwest.walk.5",
+        "character.gus.northwest.walk.6",
+        "character.gus.northwest.walk.7"
+      ],
+      "motion": {
+        "strideScreenPx": 8,
+        "framesPerStep": 4
+      }
+    },
+    {
+      "id": "animation.gus.northwest.work",
+      "slot": "animation.gus.northwest.work",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 110,
+      "loop": true,
+      "frames": [
+        "character.gus.northwest.work.0",
+        "character.gus.northwest.work.1",
+        "character.gus.northwest.work.2",
+        "character.gus.northwest.work.3"
+      ]
+    },
+    {
+      "id": "animation.gus.northeast.idle",
+      "slot": "animation.gus.northeast.idle",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 550,
+      "loop": true,
+      "frames": [
+        "character.gus.northeast.idle",
+        "character.gus.northeast.idle.1",
+        "character.gus.northeast.idle.2",
+        "character.gus.northeast.idle.3"
+      ],
+      "frameDurationsMs": [
+        700,
+        400,
+        700,
+        400
+      ]
+    },
+    {
+      "id": "animation.gus.northeast.walk",
+      "slot": "animation.gus.northeast.walk",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 51,
+      "loop": true,
+      "frames": [
+        "character.gus.northeast.walk.0",
+        "character.gus.northeast.walk.1",
+        "character.gus.northeast.walk.2",
+        "character.gus.northeast.walk.3",
+        "character.gus.northeast.walk.4",
+        "character.gus.northeast.walk.5",
+        "character.gus.northeast.walk.6",
+        "character.gus.northeast.walk.7"
+      ],
+      "motion": {
+        "strideScreenPx": 8,
+        "framesPerStep": 4
+      }
+    },
+    {
+      "id": "animation.gus.northeast.work",
+      "slot": "animation.gus.northeast.work",
+      "anchor": {
+        "x": 12,
+        "y": 46
+      },
+      "frameDurationMs": 110,
+      "loop": true,
+      "frames": [
+        "character.gus.northeast.work.0",
+        "character.gus.northeast.work.1",
+        "character.gus.northeast.work.2",
+        "character.gus.northeast.work.3"
+      ]
+    },
+    {
+      "id": "animation.good-card-heart",
+      "slot": "effect.good-card-heart",
+      "anchor": {
+        "x": 12,
+        "y": 20
+      },
+      "frameDurationMs": 100,
+      "loop": false,
+      "frames": [
+        "effect.good-card-heart.0",
+        "effect.good-card-heart.1",
+        "effect.good-card-heart.2",
+        "effect.good-card-heart.3"
+      ]
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "opening-empty",
+      "label": "开局光秃办公室",
+      "columns": 20,
+      "rows": 12,
+      "origin": {
+        "x": 320,
+        "y": 80
+      },
+      "camera": {
+        "x": 0,
+        "y": 10,
+        "zoom": 1
+      },
+      "placements": [
+        {
+          "id": "opening-box-a",
+          "assetId": "furniture.moving-box",
+          "x": 4,
+          "y": 3
+        },
+        {
+          "id": "opening-box-b",
+          "assetId": "furniture.moving-box",
+          "x": 6,
+          "y": 4
+        },
+        {
+          "id": "opening-gus",
+          "animationId": "animation.gus.southeast.idle",
+          "x": 2,
+          "y": 2
+        }
+      ]
+    },
+    {
+      "id": "mid-growth",
+      "label": "中期发展办公室",
+      "columns": 20,
+      "rows": 12,
+      "origin": {
+        "x": 320,
+        "y": 80
+      },
+      "camera": {
+        "x": 0,
+        "y": 10,
+        "zoom": 1
+      },
+      "placements": [
+        {
+          "id": "growth-desk",
+          "assetId": "furniture.desk-island",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "id": "growth-meeting",
+          "assetId": "furniture.meeting-table",
+          "x": 8,
+          "y": 4
+        },
+        {
+          "id": "growth-storage",
+          "assetId": "furniture.storage-cabinet",
+          "x": 1,
+          "y": 5
+        },
+        {
+          "id": "growth-tea-bar",
+          "assetId": "furniture.tea-coffee-bar",
+          "x": 2,
+          "y": 8
+        },
+        {
+          "id": "growth-gus",
+          "animationId": "animation.gus.southeast.work",
+          "x": 7,
+          "y": 2,
+          "elapsedMs": 180
+        }
+      ]
+    },
+    {
+      "id": "eight-player",
+      "label": "八人同屏",
+      "columns": 20,
+      "rows": 12,
+      "origin": {
+        "x": 320,
+        "y": 80
+      },
+      "camera": {
+        "x": 0,
+        "y": 10,
+        "zoom": 1
+      },
+      "placements": [
+        {
+          "id": "player-ava",
+          "animationId": "animation.gus.southeast.idle",
+          "x": 1,
+          "y": 1
+        },
+        {
+          "id": "player-ben",
+          "animationId": "animation.gus.southeast.walk",
+          "x": 6,
+          "y": 1,
+          "elapsedMs": 120
+        },
+        {
+          "id": "player-cleo",
+          "animationId": "animation.gus.southwest.idle",
+          "x": 13,
+          "y": 1
+        },
+        {
+          "id": "player-drew",
+          "animationId": "animation.gus.southwest.walk",
+          "x": 18,
+          "y": 1,
+          "elapsedMs": 240
+        },
+        {
+          "id": "player-eli",
+          "animationId": "animation.gus.northwest.idle",
+          "x": 1,
+          "y": 10
+        },
+        {
+          "id": "player-faye",
+          "animationId": "animation.gus.northwest.work",
+          "x": 6,
+          "y": 10,
+          "elapsedMs": 180
+        },
+        {
+          "id": "player-gus",
+          "animationId": "animation.gus.northeast.walk",
+          "x": 13,
+          "y": 10,
+          "elapsedMs": 360
+        },
+        {
+          "id": "player-hana",
+          "animationId": "animation.gus.northeast.idle",
+          "x": 18,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "id": "occlusion-stress",
+      "label": "遮挡压力场景",
+      "columns": 20,
+      "rows": 12,
+      "origin": {
+        "x": 320,
+        "y": 80
+      },
+      "camera": {
+        "x": 0,
+        "y": 10,
+        "zoom": 1
+      },
+      "placements": [
+        {
+          "id": "occlusion-desk",
+          "assetId": "furniture.desk-island",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "id": "occlusion-behind",
+          "animationId": "animation.gus.southeast.idle",
+          "x": 8,
+          "y": 4
+        },
+        {
+          "id": "occlusion-storage",
+          "assetId": "furniture.storage-cabinet",
+          "x": 8,
+          "y": 5
+        },
+        {
+          "id": "occlusion-front",
+          "animationId": "animation.gus.northwest.idle",
+          "x": 8,
+          "y": 7
+        },
+        {
+          "id": "occlusion-tea-bar",
+          "assetId": "furniture.tea-coffee-bar",
+          "x": 10,
+          "y": 5
+        }
+      ]
+    }
+  ]
+}

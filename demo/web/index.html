@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#16292f" />
+    <title>一起做点什么</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell" aria-label="团队放置游戏">
+      <header class="hud" aria-label="游戏操作">
+        <div class="balance-cluster">
+          <output id="balance" class="balance" aria-label="当前余额">$0</output>
+          <span id="connection-status" class="connection-status" data-state="connecting" role="status" aria-live="polite">正在连接</span>
+        </div>
+        <button id="checkin-button" class="hud-button" type="button">每日签到</button>
+        <button id="card-button" class="hud-button hud-button--warm" type="button">今日好人卡</button>
+      </header>
+
+      <section class="world-frame" aria-label="共享工作室">
+        <div class="canvas-stage">
+          <canvas
+            id="game-canvas"
+            width="640"
+            height="360"
+            tabindex="0"
+            aria-label="等距共享工作室。轻点地面或使用 WASD 与方向键移动，点击桌边座位开始工作，拖动平移视角，滚轮或双指缩放。"
+          ></canvas>
+          <div class="mobile-zoom" aria-label="视角缩放">
+            <button id="zoom-out-button" type="button" aria-label="缩小视角">−</button>
+            <button id="zoom-in-button" type="button" aria-label="放大视角">+</button>
+          </div>
+          <div id="interaction-hint" class="interaction-hint" role="note">
+            <span class="hint-desktop">点击空地移动 · 点桌边座位工作 · 拖动/滚轮调整视角</span>
+            <span class="hint-mobile">轻点空地移动 · 点桌边座位工作 · 拖动/双指缩放</span>
+          </div>
+          <section id="connection-blocker" class="connection-blocker" role="alert" aria-live="assertive" hidden>
+            <div class="connection-blocker-card">
+              <span class="blocker-mark" aria-hidden="true">!</span>
+              <strong>暂时无法进入工作室</strong>
+              <p id="connection-blocker-message">连接没有完成，请重试或返回实时验收。</p>
+              <div class="blocker-actions">
+                <button id="connection-retry" class="primary-button" type="button">重新连接</button>
+                <a id="connection-back" class="secondary-link" href="/review">返回实时验收</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <dialog id="wheel-dialog" class="game-dialog wheel-dialog" aria-labelledby="wheel-title">
+      <form method="dialog" class="dialog-sheet">
+        <header class="dialog-header">
+          <div>
+            <p class="eyebrow">今天也辛苦了</p>
+            <h1 id="wheel-title">每日签到</h1>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="关闭签到弹窗">×</button>
+        </header>
+
+        <div class="wheel-stage" aria-hidden="true">
+          <span class="wheel-pointer"></span>
+          <div id="reward-wheel" class="reward-wheel">
+            <span class="wheel-hub">$</span>
+          </div>
+        </div>
+        <p id="wheel-result" class="dialog-result">转一下，领取今天的工作室分红。</p>
+        <button id="spin-button" class="primary-button" type="button">开始转盘</button>
+      </form>
+    </dialog>
+
+    <dialog id="card-dialog" class="game-dialog card-dialog" aria-labelledby="card-title">
+      <form method="dialog" class="dialog-sheet">
+        <header class="dialog-header">
+          <div>
+            <p class="eyebrow">一次小小的认可</p>
+            <h1 id="card-title">今日好人卡</h1>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="关闭好人卡弹窗">×</button>
+        </header>
+
+        <fieldset class="recipient-fieldset">
+          <legend>送给今天帮到你的同伴</legend>
+          <div id="recipient-list" class="recipient-list"></div>
+        </fieldset>
+        <p id="card-result" class="dialog-result">每天一张，只表达感谢，不增加战斗力。</p>
+        <footer class="card-submit-bar">
+          <button id="send-card-button" class="primary-button primary-button--coral" type="button" disabled>
+            送出好人卡
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <script type="module" src="./client.mjs"></script>
+  </body>
+</html>
