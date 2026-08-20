@@ -11,6 +11,8 @@ import {
   Trophy,
 } from '@lucide/vue'
 import {
+  formatPluginDuration,
+  usePluginFullscreen,
   usePluginGameActions,
   type ArcadeSnapshot,
 } from '@game-hall/plugin-sdk'
@@ -51,7 +53,7 @@ const game = computed(() => props.snapshot.game as PyramidGameState)
 const selectedIds = ref<string[]>([])
 const sending = ref(false)
 const gameRoot = ref<HTMLElement | null>(null)
-const isFullscreen = ref(false)
+const { isFullscreen, toggle: togglePluginFullscreen } = usePluginFullscreen(gameRoot)
 const hint = ref('选择一张露出的牌，再找一张与它合计为 13 的牌')
 const clockBase = ref(0)
 const clockSyncedAt = ref(0)
@@ -189,16 +191,6 @@ async function restartGame() {
   }
 }
 
-function formatTime(milliseconds: number): string {
-  const totalTenths = Math.floor(milliseconds / 100)
-  const minutes = Math.floor(totalTenths / 600)
-  const seconds = Math.floor(totalTenths / 10) % 60
-  const tenths = totalTenths % 10
-  return minutes
-    ? `${minutes}:${String(seconds).padStart(2, '0')}.${tenths}`
-    : `${seconds}.${tenths} 秒`
-}
-
 function syncClock() {
   const current = performance.now()
   clockBase.value = game.value.elapsedMs ?? 0
@@ -206,25 +198,8 @@ function syncClock() {
   clockNow.value = current
 }
 
-function syncFullscreen() {
-  isFullscreen.value = document.fullscreenElement === gameRoot.value
-}
-
 async function toggleFullscreen() {
-  const root = gameRoot.value
-  if (!root) return
-
-  try {
-    if (document.fullscreenElement === root || isFullscreen.value) {
-      if (document.fullscreenElement) {
-        await document.exitFullscreen()
-      } else {
-        isFullscreen.value = false
-      }
-    } else {
-      await root.requestFullscreen()
-    }
-  } catch {
+  if (!await togglePluginFullscreen()) {
     hint.value = '浏览器未允许进入全屏，请检查浏览器权限后重试'
   }
 }
@@ -240,14 +215,12 @@ watch(availableIds, (current) => {
 })
 
 onMounted(() => {
-  document.addEventListener('fullscreenchange', syncFullscreen)
   clockTimer = window.setInterval(() => {
     clockNow.value = performance.now()
   }, 100)
 })
 
 onBeforeUnmount(() => {
-  document.removeEventListener('fullscreenchange', syncFullscreen)
   if (clockTimer !== null) window.clearInterval(clockTimer)
 })
 </script>
@@ -258,7 +231,7 @@ onBeforeUnmount(() => {
       <header class="pyramid-metrics" aria-label="金字塔纸牌挑战状态">
         <div>
           <Clock3 :size="18" />
-          <span><b>{{ formatTime(displayedElapsedMs) }}</b><small>本轮用时</small></span>
+          <span><b>{{ formatPluginDuration(displayedElapsedMs) }}</b><small>本轮用时</small></span>
         </div>
         <div>
           <Layers3 :size="18" />
@@ -407,7 +380,7 @@ onBeforeUnmount(() => {
       <div class="result-metrics">
         <span><b>{{ game.pyramidCleared ?? 0 }}</b>清除牌数</span>
         <span><b>{{ game.removalMoves ?? 0 }}</b>消除次数</span>
-        <span><b>{{ formatTime(game.elapsedMs ?? 0) }}</b>完成用时</span>
+        <span><b>{{ formatPluginDuration(game.elapsedMs ?? 0) }}</b>完成用时</span>
       </div>
       <button
         v-if="snapshot.actions.canRestart"

@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "id": "plugin-counter-demo",
   "name": "计数竞速",
-  "description": "第三方插件示例：率先累计到 10 分",
+  "description": "社区插件示例：率先累计到 10 分",
   "category": "插件示例",
   "tone": "plugin-demo",
   "players": {

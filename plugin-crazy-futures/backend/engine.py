@@ -8,7 +8,6 @@ from typing import Any, Iterable
 from backend.app.games.plugin_api import ArcadePlayer, ArcadeRoom, GameRuleError
 
 from .catalog import (
-    CARD_BY_ID,
     COMMODITIES,
     COMMODITY_COLORS,
     COMMODITY_LABELS,
@@ -27,12 +26,10 @@ from .state import (
     LoanRecord,
     PendingChoice,
     PlayerLedger,
-    PositionState,
 )
 
 
 MAX_ROUNDS = 8
-INITIAL_CASH = 100
 MAX_LOAN = 100
 LOAN_STEP = 10
 HAND_LIMIT = 6

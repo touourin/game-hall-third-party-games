@@ -1,6 +1,6 @@
-# 第三方游戏接入手册
+# 社区游戏接入手册
 
-本仓库是游戏大厅的第三方游戏源码仓库，可以作为可选 Git Submodule 挂载到主项目的 `third_party_games/`。每款游戏独立维护自己的规则、状态、界面、资源和测试；主项目只提供稳定的房间平台、游戏注册表和插件 SDK。主项目未初始化本仓库时仍能以仅含官方游戏的形态构建和运行。
+本仓库是游戏大厅的社区游戏源码仓库，可以作为可选 Git Submodule 挂载到主项目的 `game-hall-community-games/`。每款游戏独立维护自己的规则、状态、界面、资源和测试；主项目只提供稳定的房间平台、游戏注册表和插件 SDK。主项目未初始化本仓库时仍能以仅含官方游戏的形态构建和运行。
 
 接入一款普通游戏时，不需要修改主项目的大厅、路由、房间、账号、Socket 或战绩代码。完成插件目录后，由本仓库根部的 `registry.json` 决定是否发布。
 
@@ -33,7 +33,7 @@
 目录名通常与插件 ID 一致，并以 `plugin-` 开头：
 
 ```text
-third_party_games/
+game-hall-community-games/
 ├── README.md
 ├── registry.json                 # 生产发布注册表
 ├── registry.schema.json
@@ -51,7 +51,9 @@ third_party_games/
     │   ├── GameView.vue          # 必需：固定前端入口
     │   ├── components/           # 可选：本游戏组件
     │   ├── composables/          # 可选：本游戏逻辑
-    │   └── assets/               # 可选：图片、字体等资源
+    │   └── assets/
+    │       ├── catalog-dark.webp # 发布必需：深色大厅图标
+    │       └── catalog-light.webp # 发布必需：浅色大厅图标
     └── tests/                    # 推荐：规则与界面测试
 ```
 
@@ -59,7 +61,7 @@ third_party_games/
 
 ## 3. 最快新增一款游戏
 
-在第三方仓库根目录执行：
+在社区仓库根目录执行：
 
 ```bash
 cp -R plugin-counter-demo plugin-your-game
@@ -70,13 +72,35 @@ cp -R plugin-counter-demo plugin-your-game
 1. 将目录和 `manifest.id` 改成唯一的 `plugin-*` ID。
 2. 填写版本、作者、许可证、人数、能力和战绩类型。
 3. 在 `backend/` 实现服务端规则，在 `frontend/` 实现界面。
-4. 在本插件的 `README.md` 写清动作名称、payload、隐藏信息和结算方式。
-5. 为关键规则、权限边界和主要界面补测试。
-6. 在尚未加入根 `registry.json` 的状态下完成开发。
-7. 运行插件测试、全量测试和生产构建。
-8. 由维护者审核后把插件加入 `registry.json`，再次完整验证并发布。
+4. 在 `frontend/assets/` 制作成对的深浅大厅图标。
+5. 在本插件的 `README.md` 写清动作名称、payload、隐藏信息和结算方式。
+6. 为关键规则、权限边界和主要界面补测试。
+7. 在尚未加入根 `registry.json` 的状态下完成开发。
+8. 运行插件测试、全量测试和生产构建。
+9. 由维护者审核后把插件加入 `registry.json`，再次完整验证并发布。
 
 一款普通新游戏的开发提交应主要修改自己的目录。只有平台能力确实不足时，才单独提交主项目 SDK 或插件 API 升级。
+
+### 大厅图标
+
+每款准备发布的新游戏必须在自己的 `frontend/assets/` 中提供：
+
+- `catalog-dark.webp`：深色主题使用。
+- `catalog-light.webp`：浅色主题使用。
+
+两张图由主项目构建脚本自动发现并写入统一游戏注册表，不需要修改 manifest、不需要升级 `apiVersion`，也不需要在主仓库为具体插件登记图标路径。旧插件两张都不存在时会继续使用公共占位图；只提供一张、文件不是 WebP 或尺寸不正确会直接构建失败。
+
+图标必须遵守与官方游戏相同的产品视觉规范：
+
+- WebP、sRGB、`768 × 768`、质量 90，使用完整方形背景且不透明。
+- 深浅版保持完全相同的物体数量、几何轮廓、镜头、构图和空间关系，只切换材质与背景。
+- 使用略俯视的 3/4 产品镜头、圆角双层基座、4–6 层精密材质、柔和高光与真实接触阴影。
+- 黑、白、灰和金属中性色占 80%–90%，只使用一种低饱和点缀色。
+- 主体放在中央 82% 安全区内，并在 142、104、72 像素三档检查识别度。
+- 不得出现人物、场景截图、大段文字、Logo、水印、电竞盾牌、奇幻徽章、强霓虹或廉价手游边框。
+- 大厅图标只提交最终的 `catalog-dark.webp` 和 `catalog-light.webp`；对应 PNG、SVG、生成草稿和源文件放在运行时目录之外。游戏实际运行需要的其他资源仍可保留在 `frontend/assets/`。
+
+图标必须准确表达当前玩法，不能为了好看增加不存在的棋子、卡牌数量或规则元素。发布前应将深浅版与至少三款官方图标并排检查，确认属于同一视觉家族，同时能在不看标题时辨认游戏。
 
 ## 4. manifest.json API v1
 
@@ -250,20 +274,26 @@ actions.publishSpectatorFrame(sequence, { board, effects })
 
 公开界面组件：
 
-| 导出 | 用途 |
-| --- | --- |
-| `PluginButton` | 主题自适应的主要、次要或危险操作按钮 |
-| `PluginIconButton` | 强制提供无障碍标签的圆形图标按钮 |
-| `PluginPlayingCard` | 支持明牌、背面、选中、王牌和多种尺寸的标准扑克牌 |
-| `PluginResultCard` | 单人游戏通用结算、指标和再来一局入口 |
-| `PluginRevealCard` | 按住显示、松开隐藏的私密信息卡 |
+| 分类 | 导出 | 用途 |
+| --- | --- | --- |
+| 操作 | `PluginButton`、`PluginIconButton` | 主题自适应的普通按钮和带无障碍标签的图标按钮 |
+| 游戏展示 | `PluginPlayingCard`、`PluginRevealCard` | 标准扑克牌与按住显示的私密信息卡 |
+| 数据与结算 | `PluginMetricGrid`、`PluginResultCard` | 指标网格与单人游戏通用结算 |
+| 规则 | `PluginRuleGuide` | 快速开始、流程、完整规则和背景说明 |
+| 弹窗 | `PluginModal`、`PluginConfirmDialog` | 通用弹窗与确认/危险确认流程 |
+| 表单 | `PluginTextField`、`PluginNumberField`、`PluginSelect` | 带标签、说明、错误和无障碍关联的输入控件 |
+| 状态 | `PluginStatePanel`、`PluginLoadingState`、`PluginEmptyState`、`PluginErrorState` | 自定义或预设的加载、空内容和失败反馈 |
 
 这些组件是插件 API v1 的稳定公共包装，不暴露主项目内部文件路径。按钮支持原生 `disabled`、`type`、`aria-*` 和点击事件；组件的 Props 类型也从同一个 SDK 导出。
 
+开发新游戏时，应先检查 `@game-hall/plugin-sdk` 已开放的组件、组合式函数、格式化工具和宿主能力，并优先复用它们。只有游戏特有的规则或表现确实无法由公共 SDK 表达时，才在插件目录内自行实现；如果一项能力会被多款游戏使用，应先将其抽象为稳定、通用的 SDK 能力，而不是复制实现或导入主项目内部路径。
+
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue'
 import {
   PluginButton,
+  PluginNumberField,
   PluginResultCard,
   usePluginGameActions,
   type ArcadeSnapshot,
@@ -271,9 +301,17 @@ import {
 
 defineProps<{ snapshot: ArcadeSnapshot }>()
 const actions = usePluginGameActions()
+const guess = ref<number | null>(null)
 </script>
 
 <template>
+  <PluginNumberField
+    v-model="guess"
+    label="你的猜测"
+    description="只能填写 1 到 20"
+    :min="1"
+    :max="20"
+  />
   <PluginButton block variant="primary" :disabled="!snapshot.actions.canAct">
     确认行动
   </PluginButton>
@@ -286,6 +324,43 @@ const actions = usePluginGameActions()
   />
 </template>
 ```
+
+公共宿主能力：
+
+| 导出 | 用途 |
+| --- | --- |
+| `formatPluginDuration` | 统一显示计时器或可读时长，默认保留一位小数且不会把进行中的时间向前舍入 |
+| `formatPluginScore` | 统一数字精度、千分位和分数单位 |
+| `usePluginFullscreen` | 让插件自己的根元素进入/退出全屏，并自动同步浏览器状态和清理监听器 |
+| `usePluginTheme` | 只读获取当前主题和该主题的材质值 |
+| `pluginThemeMaterials` | 按主题名读取不可变的场景、舞台、金属、文字和语义色材质 |
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import {
+  formatPluginDuration,
+  usePluginFullscreen,
+  usePluginTheme,
+} from '@game-hall/plugin-sdk'
+
+const gameRoot = ref<HTMLElement | null>(null)
+const { isFullscreen, isSupported, toggle } = usePluginFullscreen(gameRoot)
+const { theme, materials } = usePluginTheme()
+</script>
+
+<template>
+  <section ref="gameRoot">
+    <span>{{ formatPluginDuration(65_200) }}</span>
+    <button v-if="isSupported" @click="toggle">
+      {{ isFullscreen ? '退出全屏' : '进入全屏' }}
+    </button>
+    <small>{{ theme }} · {{ materials.stage.edge }}</small>
+  </section>
+</template>
+```
+
+`usePluginTheme()` 不允许插件修改用户主题，`usePluginFullscreen()` 也只操作传入的插件元素。需要大厅导航、账号、聊天、房间管理或其他宿主业务时，不要导入内部模块，应先判断是否能抽象成更小的公共能力。
 
 常用快照数据：
 
@@ -314,8 +389,8 @@ const actions = usePluginGameActions()
 根注册表与插件 manifest 当前都使用 `apiVersion: 1`，但它们是两套独立版本号：前者表示“发布清单格式第 1 版”，改变发布清单结构时才升级；后者表示“宿主能力契约第 1 版”，改变宿主提供给游戏的接口时才升级。
 
 - `id` 必须与 manifest 一致。
-- `path` 是相对第三方仓库根目录的安全路径。
-- `order` 在第三方游戏中唯一，控制第三方入口排序。
+- `path` 是相对社区仓库根目录的安全路径。
+- `order` 在社区游戏中唯一，控制社区入口排序。
 - `enabled`：正常发布并显示在目录中。
 - `deprecated`：继续加载引擎和界面以兼容已有房间，但不出现在新游戏目录中。
 - `disabled`：完全不进入构建和后端加载。
@@ -333,10 +408,10 @@ const actions = usePluginGameActions()
 .venv/bin/python -m backend.app.games.validate_plugins
 
 # 当前插件后端测试
-.venv/bin/python -m pytest third_party_games/plugin-your-game/tests
+.venv/bin/python -m pytest game-hall-community-games/plugin-your-game/tests
 
 # 当前插件前端测试
-npm --prefix frontend run test:run -- ../third_party_games/plugin-your-game/frontend
+npm --prefix frontend run test:run -- ../game-hall-community-games/plugin-your-game/frontend
 
 # 全部后端、示例、插件和前端测试
 npm test
@@ -351,13 +426,14 @@ npm run build
 - 建房、加入、游客限制、开局、主要动作、重连、结束、再来一局正常。
 - 观众可见、视角固定、完全只读，隐藏信息符合产品规则。
 - 战绩 `scoreKind` 与 `player_score()` 一致。
+- 深浅大厅图标成对存在、尺寸正确、几何一致，并在 72 像素下仍可识别。
 - 桌面端和手机端没有页面级横向滚动。
 - 插件目录外没有意外业务改动。
 
 提交与部署顺序：
 
-1. 在本第三方仓库提交并推送插件与 `registry.json`。
-2. 服务器在主仓库运行 `python3 scripts/restart.py`，更新第三方仓库 `origin/main` 最新提交。
+1. 在本社区仓库提交并推送插件与 `registry.json`。
+2. 服务器在主仓库运行 `python3 scripts/restart.py`，更新社区仓库 `origin/main` 最新提交。
 3. 脚本先构建镜像，再严格校验全部已发布插件，成功后才替换当前服务。
 4. 生产验证后，主仓库可以更新 Submodule 指针作为新的开发、CI、复现和回滚基线。
 
@@ -367,7 +443,7 @@ npm run build
 
 ### 插件没有出现在入口
 
-检查插件是否已加入根 `registry.json`、状态是否为 `enabled`、三个必需入口是否存在，以及 `npm run build` 是否报告清单错误。只存在 manifest 不会发布。
+检查插件是否已加入根 `registry.json`、状态是否为 `enabled`、三个必需入口和两张大厅图标是否存在，以及 `npm run build` 是否报告清单或图标错误。只存在 manifest 不会发布。
 
 ### 后端校验失败
 
@@ -379,7 +455,7 @@ npm run build
 
 ### 能直接复用主项目内部组件吗
 
-不能直接导入主项目内部路径，但可以复用 `@game-hall/plugin-sdk` 正式开放的组件、类型和组合式函数。公共包装层保证插件不依赖宿主目录结构；多款插件都需要的新能力，应先升级公共 SDK。后端同理，只使用 Python 标准库、已审核依赖和 `backend.app.games.plugin_api`，不能导入宿主内部模块。
+不能直接导入主项目内部路径，但可以复用 `@game-hall/plugin-sdk` 正式开放的组件、类型和组合式函数。现在已经开放按钮、卡牌、指标、结算、规则、弹窗、表单、状态、全屏、主题和格式化能力。公共包装层保证插件不依赖宿主目录结构；多款插件都需要的新能力，应先升级公共 SDK。后端同理，只使用 Python 标准库、已审核依赖和 `backend.app.games.plugin_api`，不能导入宿主内部模块。
 
 ### 能保证任意主项目版本兼容任意插件版本吗
 

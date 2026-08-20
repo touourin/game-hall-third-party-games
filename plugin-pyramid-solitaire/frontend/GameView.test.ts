@@ -9,7 +9,8 @@ const pluginActions = vi.hoisted(() => ({
   publishSpectatorFrame: vi.fn(() => true),
 }))
 
-vi.mock('@game-hall/plugin-sdk', () => ({
+vi.mock('@game-hall/plugin-sdk', async (importOriginal) => ({
+  ...await importOriginal<typeof import('@game-hall/plugin-sdk')>(),
   usePluginGameActions: () => pluginActions,
 }))
 

@@ -40,12 +40,12 @@
 
 ## 本地验证
 
-在已经初始化 `third_party_games` 子模块的游戏大厅根目录执行：
+在已经初始化 `game-hall-community-games` 子模块的游戏大厅根目录执行：
 
 ```bash
-.venv/bin/python -m pytest third_party_games/plugin-crazy-futures/tests
+.venv/bin/python -m pytest game-hall-community-games/plugin-crazy-futures/tests
 .venv/bin/python -m pytest backend/tests/test_game_plugins.py
-npm --prefix frontend run test:run -- ../third_party_games/plugin-crazy-futures/frontend
+npm --prefix frontend run test:run -- ../game-hall-community-games/plugin-crazy-futures/frontend
 npm --prefix frontend run plugins:sync
 npm test
 npm run build

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://game-hall.local/schemas/game-plugin-v1.json",
-  "title": "Game Hall third-party game plugin",
+  "title": "Game Hall community game plugin",
   "type": "object",
   "additionalProperties": false,
   "required": [

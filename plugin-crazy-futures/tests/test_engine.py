@@ -13,13 +13,13 @@ from backend.app.games.plugins import discover_game_plugins
 
 
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
-THIRD_PARTY_ROOT = PLUGIN_ROOT.parent
+COMMUNITY_ROOT = PLUGIN_ROOT.parent
 
 
 def load_engine():
     return next(
         plugin.engine
-        for plugin in discover_game_plugins(THIRD_PARTY_ROOT)
+        for plugin in discover_game_plugins(COMMUNITY_ROOT)
         if plugin.engine.key == "plugin-crazy-futures"
     )
 
