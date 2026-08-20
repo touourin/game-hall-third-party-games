@@ -1,9 +1,11 @@
 import {
   AssetBindingError,
   GameNetwork,
+  buildReviewRecoveryUrl,
   isTrustedReviewCommand,
   normaliseBootstrapAssetBinding,
   parseLaunchContext,
+  shouldRecoverThroughReview,
 } from "./network.mjs";
 import {
   AssetIntegrityError,
@@ -658,6 +660,10 @@ async function refreshBootstrap() {
 async function loadGame({ retry = false } = {}) {
   if (loadPromise) return loadPromise;
   loadPromise = (async () => {
+    if (shouldRecoverThroughReview(launch, window)) {
+      window.location.replace(buildReviewRecoveryUrl(window.location));
+      return;
+    }
     if (!launch.token) {
       scene.setLoading();
       setCoreInteractionEnabled(false);

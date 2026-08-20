@@ -38,6 +38,19 @@ export function parseLaunchContext(locationLike = globalThis.location) {
   return { run, token, review };
 }
 
+export function buildReviewRecoveryUrl(locationLike = globalThis.location) {
+  const url = new URL(locationLike?.href ?? String(locationLike), globalThis.location?.origin ?? "http://localhost");
+  const fragment = new URLSearchParams(url.hash.replace(/^#/, ""));
+  const run = url.searchParams.get("run") || fragment.get("run") || fragment.get("reviewRun") || "";
+  const recovery = new URL("/review", url.origin);
+  if (run) recovery.searchParams.set("run", run);
+  return recovery.href;
+}
+
+export function shouldRecoverThroughReview(launchContext, windowLike = globalThis.window) {
+  return !String(launchContext?.token || "") && Boolean(windowLike && windowLike.parent === windowLike);
+}
+
 export function rememberToken(token) {
   inMemoryToken = String(token || "");
 }

@@ -6,10 +6,12 @@ import { fileURLToPath } from 'node:url'
 import {
   AssetBindingError,
   GameNetwork,
+  buildReviewRecoveryUrl,
   isTrustedReviewCommand,
   normaliseBootstrapAssetBinding,
   parseLaunchContext,
   rememberToken,
+  shouldRecoverThroughReview,
 } from '../web/network.mjs'
 import { fixtureCollisionCells, groundPointForPlacement } from '../web/asset-manifest.mjs'
 import {
@@ -128,6 +130,22 @@ test('launch credentials come from the fragment and remain memory-only', async (
   assert.equal(source.includes('localStorage'), false)
   assert.equal(source.includes('searchParams.get("token")'), false)
   assert.ok(source.includes('replaceState'))
+})
+
+test('top-level launches without credentials recover through review', () => {
+  const topLevelWindow = {}
+  topLevelWindow.parent = topLevelWindow
+  assert.equal(shouldRecoverThroughReview({ token: '' }, topLevelWindow), true)
+  assert.equal(shouldRecoverThroughReview({ token: 'secret' }, topLevelWindow), false)
+  assert.equal(shouldRecoverThroughReview({ token: '' }, { parent: {} }), false)
+  assert.equal(
+    buildReviewRecoveryUrl({ href: 'https://game.test/#review=1&reviewRun=run-2&playerToken=secret' }),
+    'https://game.test/review?run=run-2',
+  )
+  assert.equal(
+    buildReviewRecoveryUrl({ href: 'https://game.test/' }),
+    'https://game.test/review',
+  )
 })
 
 test('review commands require the exact parent, origin and non-empty run id', () => {
